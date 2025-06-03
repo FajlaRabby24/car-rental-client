@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Emily Johnson",
+    "image": "https://randomuser.me/api/portraits/women/44.jpg",
+    "rating": 4.5,
+    "review": "Booking was super easy and the car was spotless. Highly recommended!"
+  },
+  {
+    "id": 2,
+    "name": "Michael Smith",
+    "image": "https://randomuser.me/api/portraits/men/32.jpg",
+    "rating": 4,
+    "review": "Great service, affordable price. The support team was quick to answer all my questions."
+  },
+  {
+    "id": 3,
+    "name": "Sarah Lee",
+    "image": "https://randomuser.me/api/portraits/women/68.jpg",
+    "rating": 5,
+    "review": "Loved the wide range of cars available. Found the perfect ride for my road trip!"
+  },
+  {
+    "id": 4,
+    "name": "David Kim",
+    "image": "https://randomuser.me/api/portraits/men/76.jpg",
+    "rating": 4,
+    "review": "Car was decent, but could have been cleaner. Booking process was smooth though."
+  },
+  {
+    "id": 5,
+    "name": "Aisha Patel",
+    "image": "https://randomuser.me/api/portraits/women/55.jpg",
+    "rating": 5,
+    "review": "Exceptional service and quality vehicles. My luxury car rental felt like royalty."
+  },
+  {
+    "id": 6,
+    "name": "James Anderson",
+    "image": "https://randomuser.me/api/portraits/men/51.jpg",
+    "rating": 4,
+    "review": "Customer service was top-notch. The car pickup and return were hassle-free."
+  },
+  {
+    "id": 7,
+    "name": "Olivia Brown",
+    "image": "https://randomuser.me/api/portraits/women/21.jpg",
+    "rating": 5,
+    "review": "Fantastic experience! The car was in excellent condition and super fuel-efficient."
+  },
+  {
+    "id": 8,
+    "name": "Daniel Evans",
+    "image": "https://randomuser.me/api/portraits/men/29.jpg",
+    "rating": 3,
+    "review": "Car was decent, but could have been cleaner. Booking process was smooth though."
+  },
+  {
+    "id": 9,
+    "name": "Sophia Martinez",
+    "image": "https://randomuser.me/api/portraits/women/70.jpg",
+    "rating": 5,
+    "review": "Super happy with the variety. Found a hybrid car that was perfect for city travel."
+  },
+  {
+    "id": 10,
+    "name": "Liam Wilson",
+    "image": "https://randomuser.me/api/portraits/men/87.jpg",
+    "rating": 4,
+    "review": "Easy to book, great price, and the return process was fast and simple."
+  }
+]
