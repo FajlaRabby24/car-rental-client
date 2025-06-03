@@ -21,12 +21,12 @@ const Navbar = () => {
   return (
     <nav className="max-w-7xl mx-auto ">
       <div className="navbar ">
-        <div className="navbar-start">
+        <div className="navbar-start flex items-center">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" className="pr-2 lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -48,8 +48,8 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to={"/"} className="flex items-center">
-            <img src={logo} alt="logos" className="w-[55px]" />
-            <h4 className="text-lg font-bold">Car Rental</h4>
+            <img src={logo} alt="logos" className="w-[50px] md:w-[55px]" />
+            <h4 className="text-lg font-bold hidden md:block">Car Rental</h4>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
