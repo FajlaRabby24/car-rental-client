@@ -8,7 +8,7 @@ const RegisterPage = () => {
   const [showPass, setShowPass] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const { signUpUser, googleLogin, updateUserProfile } = useAuth();
+  const { signUpUser, googleLogin, updateUserProfile, signOutUser } = useAuth();
 
   const handleSignInUser = (e) => {
     e.preventDefault();
@@ -23,6 +23,7 @@ const RegisterPage = () => {
           .then(() => {
             toast.success("Registerd successfully!");
             navigate(location?.state || "/");
+            signOutUser();
           })
           .catch(() => {
             toast.error("Something went wrong! please tyy again!");

@@ -1,8 +1,12 @@
 import React from "react";
 import { Link, NavLink } from "react-router";
 import logo from "../assets/images/logo.png";
+import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
+  const { user } = useAuth();
+  console.log(user);
+
   const links = (
     <div className="flex items-center gap-3">
       <li>
