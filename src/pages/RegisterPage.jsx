@@ -1,6 +1,6 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link } from "react-router";
 
 const RegisterPage = () => {
   const [showPass, setShowPass] = useState(false);
