@@ -1,14 +1,54 @@
 import { useState } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
+import { toast } from "react-toastify";
+import useAuth from "../hooks/useAuth";
 
 const RegisterPage = () => {
   const [showPass, setShowPass] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { signUpUser, googleLogin, updateUserProfile } = useAuth();
+
+  const handleSignInUser = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const photo = e.target.photo.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    signUpUser(email, password)
+      .then(() => {
+        updateUserProfile({ displayName: name, photoURL: photo })
+          .then(() => {
+            toast.success("Registerd successfully!");
+            navigate(location?.state || "/");
+          })
+          .catch(() => {
+            toast.error("Something went wrong! please tyy again!");
+          });
+      })
+      .catch(() => {
+        toast.error("Something wrong! Please try again?");
+      });
+  };
+
+  // sign in with google
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then(() => {
+        toast.success("Login successfully!");
+        navigate(location?.state || "/");
+      })
+      .catch(() => {
+        toast.error("Something wrong! Please try again?");
+      });
+  };
 
   return (
     <div className="max-w-md bg border border-[#cccccc8f] my-16 mx-auto rounded-xl px-4 py-5">
       <h3 className="text-3xl font-semibold text-center mb-6 ">Register</h3>
-      <form>
+      <form onSubmit={handleSignInUser}>
         {/* name start  */}
         <legend className="mb-1 mt-2 font-semibold">Name</legend>
         <label className="input validator w-full bg-base-300">
@@ -157,6 +197,7 @@ const RegisterPage = () => {
       <div className="divider">OR</div>
       {/* Google */}
       <button
+        onClick={handleGoogleLogin}
         type="button"
         className="btn bg-white text-black border-[#e5e5e5] w-full"
       >

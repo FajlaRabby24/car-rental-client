@@ -5,9 +5,11 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { auth } from "../../firebase/firebase.config";
+import { AuthContext } from "./context";
 const googleProvider = new GoogleAuthProvider();
 
 const AuthPrivider = ({ children }) => {
@@ -24,6 +26,10 @@ const AuthPrivider = ({ children }) => {
   const signInUser = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const updateUserProfile = (updatedInfo) => {
+    return updateProfile(auth.currentUser, updatedInfo);
   };
 
   // sign out user
@@ -54,6 +60,7 @@ const AuthPrivider = ({ children }) => {
     user,
     signOutUser,
     googleLogin,
+    updateUserProfile,
   };
   return <AuthContext value={authValue}>{children}</AuthContext>;
 };

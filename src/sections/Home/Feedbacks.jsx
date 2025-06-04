@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import ReactStars from "react-rating-stars-component";
 import { FaStarHalfStroke } from "react-icons/fa6";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -32,7 +31,7 @@ const Feedbacks = () => {
               spaceBetween={30}
               slidesPerView={4}
               autoplay={{
-                delay: 2500,
+                delay: 2000,
                 disableOnInteraction: false,
               }}
               loop={true}
