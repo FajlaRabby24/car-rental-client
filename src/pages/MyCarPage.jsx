@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import useAuth from "../hooks/useAuth";
 import MyCarsTr from "../components/MyCarsTr";
+import NoCars from "../sections/My cars/NoCars";
+import { Link } from "react-router";
 
 const MyCarPage = () => {
   const [myCars, setMyCars] = useState([]);
@@ -30,33 +32,48 @@ const MyCarPage = () => {
       <h1 className="text-2xl md:text-3xl font-bold md:font-semibold mb-6">
         My Cars
       </h1>
-      <div className="overflow-x-auto">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr>
-              <th>Image</th>
-              <th>Modal</th>
-              <th>Price/day</th>
-              <th>Avaibality</th>
-              <th>BookingCount</th>
-              <th>Data added</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* row 1 */}
-            {myCars.map((car) => (
-              <MyCarsTr
-                key={car._id}
-                car={car}
-                handleUpdateUi={handleUpdateUi}
-                handleUpdateUiAfterCarDeleted={handleUpdateUiAfterCarDeleted}
-              />
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {myCars.length ? (
+        <div className="overflow-x-auto">
+          <table className="table">
+            {/* head */}
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Modal</th>
+                <th>Price/day</th>
+                <th>Avaibality</th>
+                <th>BookingCount</th>
+                <th>Data added</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* row 1 */}
+              {myCars.map((car) => (
+                <MyCarsTr
+                  key={car._id}
+                  car={car}
+                  handleUpdateUi={handleUpdateUi}
+                  handleUpdateUiAfterCarDeleted={handleUpdateUiAfterCarDeleted}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <NoCars>
+          <h1 className="text-2xl font-semibold text-center mb-1">
+            You have no Cars!
+          </h1>
+          <p className="font-semibold">
+            Please add a car from{" "}
+            <Link to={"/add-cars"} className="text-warning hover:underline">
+              add-cars
+            </Link>{" "}
+            page
+          </p>
+        </NoCars>
+      )}
     </div>
   );
 };
