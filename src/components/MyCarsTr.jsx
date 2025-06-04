@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { ImCross } from "react-icons/im";
 import { MdDelete } from "react-icons/md";
 
 import { FaCheckSquare, FaEdit } from "react-icons/fa";
+import CarUpdateDiolog from "./CarUpdateDiolog";
 
-const MyCarsTr = ({ car }) => {
+const MyCarsTr = ({ car, handleUpdateUi }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const { image, model, bookingCount, rentalPrice, availability, date } = car;
   return (
     <tr>
@@ -35,13 +38,21 @@ const MyCarsTr = ({ car }) => {
       </td>
       <td>{date}</td>
       <td className="space-x-2">
-        <button className="btn p-2">
+        <button className="btn p-2" onClick={() => setIsModalOpen(true)}>
           <FaEdit size={20} />
         </button>
         <button className="btn p-2">
           <MdDelete size={20} color="" />
         </button>
       </td>
+      {isModalOpen && (
+        <CarUpdateDiolog
+          isModalOpen={isModalOpen}
+          car={car}
+          handleUpdateUi={handleUpdateUi}
+          setIsModalOpen={setIsModalOpen}
+        />
+      )}
     </tr>
   );
 };

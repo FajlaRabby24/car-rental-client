@@ -13,6 +13,13 @@ const MyCarPage = () => {
       .then((res) => setMyCars(res.data));
   }, [user, axiosSecure]);
 
+  // update ui
+  const handleUpdateUi = (updateCar) => {
+    setMyCars((prevCars) =>
+      prevCars.map((car) => (car._id === updateCar._id ? updateCar : car))
+    );
+  };
+
   return (
     <div className="pt-12 pb-40">
       <h1 className="text-2xl md:text-3xl font-bold md:font-semibold mb-6">
@@ -35,7 +42,11 @@ const MyCarPage = () => {
           <tbody>
             {/* row 1 */}
             {myCars.map((car) => (
-              <MyCarsTr key={car._id} car={car} />
+              <MyCarsTr
+                key={car._id}
+                car={car}
+                handleUpdateUi={handleUpdateUi}
+              />
             ))}
           </tbody>
         </table>
