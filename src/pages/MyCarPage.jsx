@@ -20,6 +20,11 @@ const MyCarPage = () => {
     );
   };
 
+  // update ui after car deleted
+  const handleUpdateUiAfterCarDeleted = (id) => {
+    setMyCars((prev) => prev.filter((car) => car._id !== id));
+  };
+
   return (
     <div className="pt-12 pb-40">
       <h1 className="text-2xl md:text-3xl font-bold md:font-semibold mb-6">
@@ -46,6 +51,7 @@ const MyCarPage = () => {
                 key={car._id}
                 car={car}
                 handleUpdateUi={handleUpdateUi}
+                handleUpdateUiAfterCarDeleted={handleUpdateUiAfterCarDeleted}
               />
             ))}
           </tbody>
