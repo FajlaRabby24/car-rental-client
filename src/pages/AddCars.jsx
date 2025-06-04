@@ -3,10 +3,13 @@ import React, { useLayoutEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
+import useDate from "../hooks/useDate";
 
 const AddCars = () => {
   const axiosSecure = useAxiosSecure();
+  const currentDate = useDate();
   const { user } = useAuth();
+  console.log(currentDate);
 
   const handleAddCar = (e) => {
     e.preventDefault();
@@ -22,6 +25,7 @@ const AddCars = () => {
       ...rest,
       feturesToArr,
       rentalPrice: parseIntRentalPrice,
+      date: currentDate,
       owner: user.email,
     };
 
@@ -139,7 +143,7 @@ const AddCars = () => {
             ></textarea>
           </div>
         </div>
-        <button className="btn btn-block mt-5 btn-warning ">Add Recipe</button>
+        <button className="btn btn-block mt-5 btn-warning ">Add Car</button>
       </form>
     </div>
   );

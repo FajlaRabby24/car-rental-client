@@ -7,6 +7,8 @@ import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import PrivateRoute from "./PrivateRouter";
 import AddCars from "../pages/AddCars";
+import MyCarPage from "../pages/MyCarPage";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +28,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddCars />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "my-cars",
+        element: (
+          <PrivateRoute>
+            <MyCarPage />
           </PrivateRoute>
         ),
       },
