@@ -4,7 +4,7 @@ import offers2 from "../../assets/images/offers2.jpg";
 
 const SpacialOffers = () => {
   return (
-    <div>
+    <div className="pb-52">
       <h1 className="font-semibold text-4xl mb-8">Spacial Offers</h1>
       <div className="flex flex-col md:flex-row gap-7">
         {/* box 1 */}
