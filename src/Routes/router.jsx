@@ -5,6 +5,8 @@ import NotFoundPage from "../pages/NotFoundPage";
 import AvailableCarsPage from "../pages/AvailableCarsPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
+import PrivateRoute from "./PrivateRouter";
+import AddCars from "../pages/AddCars";
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +20,14 @@ export const router = createBrowserRouter([
       {
         path: "available-cars",
         Component: AvailableCarsPage,
+      },
+      {
+        path: "add-cars",
+        element: (
+          <PrivateRoute>
+            <AddCars />
+          </PrivateRoute>
+        ),
       },
       {
         path: "login",

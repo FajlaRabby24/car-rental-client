@@ -1,14 +1,46 @@
 import { useState } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
+import { toast } from "react-toastify";
+import useAuth from "../hooks/useAuth";
 
 const LoginPage = () => {
   const [showPass, setShowPass] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { signInUser, googleLogin } = useAuth();
+
+  const handleSignInUser = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    signInUser(email, password)
+      .then(() => {
+        toast.success("Login successfully!");
+        navigate(location?.state || "/");
+      })
+      .catch(() => {
+        toast.error("Something wrong! Please try again?");
+      });
+  };
+
+  // sign in with google
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then(() => {
+        toast.success("Login successfully!");
+        navigate(location?.state || "/");
+      })
+      .catch(() => {
+        toast.error("Something wrong! Please try again?");
+      });
+  };
 
   return (
     <div className="max-w-md  border border-[#cccccc8f] my-16 mx-auto rounded-xl px-4 py-5">
       <h3 className="text-3xl font-semibold text-center mb-6 ">Login</h3>
-      <form>
+      <form onSubmit={handleSignInUser}>
         {/* email start  */}
         <legend className="font-semibold mb-1 mt-2">Email</legend>
         <label className="input validator w-full bg-base-300">
@@ -96,6 +128,7 @@ const LoginPage = () => {
       <div className="divider">OR</div>
       {/* Google */}
       <button
+        onClick={handleGoogleLogin}
         type="button"
         className="btn bg-white text-black border-[#e5e5e5] w-full"
       >

@@ -2,10 +2,11 @@ import React from "react";
 import { Link, NavLink } from "react-router";
 import logo from "../assets/images/logo.png";
 import useAuth from "../hooks/useAuth";
+import { toast } from "react-toastify";
+import defaultUser from "../assets/images/defaultUser.png";
 
 const Navbar = () => {
-  const { user } = useAuth();
-  console.log(user);
+  const { user, signOutUser } = useAuth();
 
   const links = (
     <div className="flex items-center gap-3">
@@ -19,8 +20,38 @@ const Navbar = () => {
           Available Cars
         </NavLink>
       </li>
+      {user && (
+        <>
+          <li>
+            <NavLink className={"font-semibold"} to={"/add-cars"}>
+              Add cars
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className={"font-semibold"} to={"/my-cars"}>
+              My cars
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className={"font-semibold"} to={"/my-bookings"}>
+              My bookings
+            </NavLink>
+          </li>
+        </>
+      )}
     </div>
   );
+
+  // sign out user
+  const handleSignOutUser = () => {
+    signOutUser()
+      .then(() => {
+        toast.success("Sign out successfully!");
+      })
+      .catch(() => {
+        toast.error("Something wrong! Please try again?");
+      });
+  };
 
   return (
     <nav className="max-w-7xl mx-auto ">
@@ -60,12 +91,51 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end gap-4">
-          <Link to={"/login"}>
-            <button className="btn ">Login</button>
-          </Link>
-          <Link to={"/register"}>
-            <button className="btn ">Register</button>
-          </Link>
+          {user ? (
+            <div className="dropdown dropdown-end  ml-5 ">
+              <div
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content="profile"
+                className="avatar avatar-online"
+                tabIndex={0}
+              >
+                <div className="ring-primary ring-offset-base-100 w-9 rounded-full ring-2 ring-offset-2">
+                  <img
+                    src={user.photoURL || defaultUser}
+                    alt="user profile image"
+                    className="cursor-pointer"
+                  />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu bg-base-100 dark:bg-white rounded-box z-1  space-y-1 w-max p-2    shadow-sm"
+              >
+                <li>
+                  <h3 className="text-xl dark:text-black font-semibold">
+                    {user && user?.displayName}
+                  </h3>
+                </li>
+                <li>
+                  <button
+                    onClick={handleSignOutUser}
+                    className="btn btn-warning"
+                  >
+                    Sign Out
+                  </button>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <>
+              <Link to={"/login"}>
+                <button className="btn ">Login</button>
+              </Link>
+              <Link to={"/register"}>
+                <button className="btn ">Register</button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </nav>
