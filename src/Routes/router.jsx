@@ -8,7 +8,7 @@ import RegisterPage from "../pages/RegisterPage";
 import PrivateRoute from "./PrivateRouter";
 import AddCars from "../pages/AddCars";
 import MyCarPage from "../pages/MyCarPage";
-import useAxiosSecure from "../hooks/useAxiosSecure";
+import axios from "axios";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +21,8 @@ export const router = createBrowserRouter([
       },
       {
         path: "available-cars",
+        loader: () =>
+          fetch(`${import.meta.env.VITE_root_api_url}/available-cars`),
         Component: AvailableCarsPage,
       },
       {
