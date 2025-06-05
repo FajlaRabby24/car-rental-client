@@ -1,7 +1,12 @@
-import { differenceInDays } from "date-fns";
+import { differenceInDays, differenceInMilliseconds, format } from "date-fns";
 import { useState } from "react";
 import Modal from "react-modal";
 import { toast } from "react-toastify";
+import useTime from "../hooks/useTime";
+import useDate from "../hooks/useDate";
+import useAuth from "../hooks/useAuth";
+import axios from "axios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const customStyles = {
   content: {
@@ -16,11 +21,19 @@ const customStyles = {
   },
 };
 
-const BookingDiolog = ({ isModalOpen, setIsModalOpen, car }) => {
+const BookingDiolog = ({
+  isModalOpen,
+  setIsModalOpen,
+  car,
+  handleUpdateCarDetailsUi,
+}) => {
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [totalDays, setTotalDays] = useState(0);
-
+  const currentTime = useTime();
+  const currentDate = useDate();
   const {
     _id,
     model,
@@ -36,29 +49,52 @@ const BookingDiolog = ({ isModalOpen, setIsModalOpen, car }) => {
   function closeModal() {
     setIsModalOpen(false);
   }
-
   // handle booking
   const handleBooking = (e) => {
     e.preventDefault();
-    const startDate = e.target.startDate.value;
-    const endDate = e.target.endDate.value;
+    const newBooking = {
+      email: user.email,
+      bookingDate: `${currentDate} ${currentTime}`,
+      startDate,
+      endDate,
+      totalPrice: totalDays * rentalPrice,
+      image,
+      model,
+      status: "confirmed",
+    };
 
-    const days = differenceInDays(endDate, startDate);
-    console.log(days);
+    axiosSecure
+      .post(
+        `${import.meta.env.VITE_root_api_url}/booking/${_id}?email=${
+          user.email
+        }`,
+        newBooking
+      )
+      .then((res) => {
+        if (res.data.insertedId) {
+          toast.success("Your booking added successfully!");
+          handleUpdateCarDetailsUi(_id);
+          closeModal();
+        }
+      });
   };
 
   // calculate total booking price
+
   const handleCalculateBookingPrice = (type, value) => {
+    const parsedDate = new Date(value);
+    const formatted = format(parsedDate, "yyyy-MM-dd hh:mm a");
+
     if (type === "start") {
-      setStartDate(value);
+      setStartDate(formatted); // raw value
       if (endDate) {
-        const days = differenceInDays(new Date(endDate), new Date(value));
+        const days = differenceInDays(new Date(endDate), parsedDate);
         setTotalDays(days > 0 ? days : 0);
       }
     } else {
-      setEndDate(value);
+      setEndDate(formatted);
       if (startDate) {
-        const days = differenceInDays(new Date(value), new Date(startDate));
+        const days = differenceInDays(parsedDate, new Date(startDate));
         setTotalDays(days > 0 ? days : 0);
       }
     }
@@ -67,7 +103,7 @@ const BookingDiolog = ({ isModalOpen, setIsModalOpen, car }) => {
   return (
     <Modal
       isOpen={isModalOpen}
-      onRequestClose={closeModal}
+      // onRequestClose={closeModal}
       style={customStyles}
       className={""}
     >
@@ -90,7 +126,7 @@ const BookingDiolog = ({ isModalOpen, setIsModalOpen, car }) => {
           <fieldset className="fieldset">
             <legend className="fieldset-legend">Start date:</legend>
             <input
-              type="date"
+              type="datetime-local"
               name="startDate"
               required
               onChange={(e) =>
@@ -102,7 +138,7 @@ const BookingDiolog = ({ isModalOpen, setIsModalOpen, car }) => {
           <fieldset className="fieldset">
             <legend className="fieldset-legend">End date:</legend>
             <input
-              type="date"
+              type="datetime-local"
               name="endDate"
               required
               onChange={(e) =>
@@ -123,7 +159,7 @@ const BookingDiolog = ({ isModalOpen, setIsModalOpen, car }) => {
               Cancel
             </button>
             <button type="submit" className="btn  btn-success ">
-              Add feedback
+              Add booking
             </button>
           </div>
         </form>

@@ -3,9 +3,11 @@ import { FaCar, FaCarSide, FaCheckSquare } from "react-icons/fa";
 import { MdOutlineAttachMoney } from "react-icons/md";
 import { IoLocationOutline } from "react-icons/io5";
 import { Link } from "react-router";
+import useAuth from "../hooks/useAuth";
 
 const AvvailbleCarCard = ({ car, isLayoutGrid }) => {
-  const { _id, model, bookingCount, location, rentalPrice, image } = car;
+  const { _id, model, bookingCount, location, rentalPrice, image, owner } = car;
+
   return (
     <div
       className={`flex ${

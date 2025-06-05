@@ -3,12 +3,15 @@ import { FaCar } from "react-icons/fa";
 import { MdKeyboardArrowLeft, MdOutlineRateReview } from "react-icons/md";
 import { useLoaderData, useNavigate } from "react-router";
 import BookingDiolog from "../components/BookingDiolog";
+import useAuth from "../hooks/useAuth";
 
 const CarDetailsPage = () => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const car = useLoaderData();
+  const [carDetails, setCarDetails] = useState(car);
+
   const {
     _id,
     model,
@@ -19,7 +22,20 @@ const CarDetailsPage = () => {
     image,
     feturesToArr,
     description,
-  } = car;
+    owner,
+  } = carDetails;
+
+  // update ui
+  const handleUpdateCarDetailsUi = (id) => {
+    if (id) {
+      const updatedCarDetails = carDetails;
+      updatedCarDetails.bookingCount += 1;
+      setCarDetails(updatedCarDetails);
+    }
+  };
+
+  const { user } = useAuth();
+  const isOwnCar = user.email === owner;
 
   return (
     <div className="px-3 pb-40  pt-10 ">
@@ -49,7 +65,7 @@ const CarDetailsPage = () => {
             >
               <FaCar size={20} />
               <span>{bookingCount === 0 ? "No" : bookingCount}</span>
-              <span> people booking in this car</span>
+              <span> people booking this car</span>
             </p>
           </div>
           <p className="font-semibold">
@@ -81,7 +97,7 @@ const CarDetailsPage = () => {
             <button
               data-tooltip-id="my-tooltip"
               data-tooltip-content="Like this recipe"
-              //   disabled={isOwnRecipe}
+              disabled={isOwnCar}
               onClick={() => setIsModalOpen(true)}
               className="btn btn-error btn-outline"
             >
@@ -92,6 +108,7 @@ const CarDetailsPage = () => {
               <BookingDiolog
                 isModalOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
+                handleUpdateCarDetailsUi={handleUpdateCarDetailsUi}
                 car={car}
               />
             )}
