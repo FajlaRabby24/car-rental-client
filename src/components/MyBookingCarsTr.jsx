@@ -2,8 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { FaCheckSquare, FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import BookingUpdateDiolog from "./BookingUpdateDiolog";
 
-const MyBookingCarsTr = ({ car }) => {
+const MyBookingCarsTr = ({ car, handleUpdateUi }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {
     bookingDate,
@@ -66,10 +67,10 @@ const MyBookingCarsTr = ({ car }) => {
         </button>
       </td>
       {isModalOpen && (
-        <CarUpdateDiolog
+        <BookingUpdateDiolog
           isModalOpen={isModalOpen}
           car={car}
-          //   handleUpdateUi={handleUpdateUi}
+          handleUpdateUi={handleUpdateUi}
           setIsModalOpen={setIsModalOpen}
         />
       )}

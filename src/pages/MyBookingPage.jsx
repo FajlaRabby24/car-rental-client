@@ -23,6 +23,13 @@ const MyBookingPage = () => {
       });
   }, [axiosSecure, user]);
 
+  // handle update ui
+  const handleUpdateUi = (updatedCar) => {
+    setMyBookings((prevCars) =>
+      prevCars.map((car) => (car._id === updatedCar._id ? updatedCar : car))
+    );
+  };
+
   return (
     <div className="pt-16 pb-20">
       {myBookings.length ? (
@@ -43,7 +50,11 @@ const MyBookingPage = () => {
             </thead>
             <tbody>
               {myBookings.map((car) => (
-                <MyBookingCarsTr key={car._id} car={car} />
+                <MyBookingCarsTr
+                  key={car._id}
+                  car={car}
+                  handleUpdateUi={handleUpdateUi}
+                />
               ))}
             </tbody>
           </table>

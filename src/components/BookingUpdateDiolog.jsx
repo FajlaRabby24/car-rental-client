@@ -21,109 +21,81 @@ const customStyles = {
   },
 };
 
-const BookingDiolog = ({
+const BookingUpdateDiolog = ({
   isModalOpen,
   setIsModalOpen,
   car,
-  handleUpdateCarDetailsUi,
+  handleUpdateUi,
 }) => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [startDateState, setStartDateState] = useState("");
+  const [endDateState, setEndDateState] = useState("");
   const [totalDays, setTotalDays] = useState(0);
-  const currentTime = useTime();
-  const currentDate = useDate();
-  const {
-    _id,
-    model,
-    bookingCount,
-    availability,
-    location,
-    rentalPrice,
-    image,
-    feturesToArr,
-    description,
-  } = car;
+
+  const { _id, perdayPrice, startDate, endDate, totalPrice, ...rest } = car;
 
   function closeModal() {
     setIsModalOpen(false);
   }
-  // handle booking
-  const handleBooking = (e) => {
+  // handle  update booking
+  const handleUpdateBooking = (e) => {
     e.preventDefault();
-    const newBooking = {
-      email: user.email,
-      bookingDate: `${currentDate} ${currentTime}`,
-      startDate,
-      endDate,
-      perdayPrice: rentalPrice,
-      totalPrice: totalDays * rentalPrice,
-      image,
-      model,
-      status: "confirmed",
+    const updateBooking = {
+      startDate: startDateState,
+      endDate: endDateState,
+      totalPrice: totalDays * perdayPrice,
     };
 
+    const updatedUiObj = {
+      _id,
+      perdayPrice,
+      ...rest,
+      ...updateBooking,
+    };
+
+    // axios api
     axiosSecure
-      .post(
-        `${import.meta.env.VITE_root_api_url}/booking/${_id}?email=${
+      .patch(
+        `${import.meta.env.VITE_root_api_url}/update-booking/${_id}?email=${
           user.email
         }`,
-        newBooking
+        updateBooking
       )
       .then((res) => {
-        if (res.data.insertedId) {
-          toast.success("Your booking added successfully!");
-          handleUpdateCarDetailsUi(_id);
+        if (res.data.modifiedCount) {
+          toast.success("Your booking updated successfully!");
+          handleUpdateUi(updatedUiObj);
           closeModal();
         }
       });
   };
 
   // calculate total booking price
-
   const handleCalculateBookingPrice = (type, value) => {
     const parsedDate = new Date(value);
     const formatted = format(parsedDate, "yyyy-MM-dd hh:mm a");
 
     if (type === "start") {
-      setStartDate(formatted); // raw value
-      if (endDate) {
-        const days = differenceInDays(new Date(endDate), parsedDate);
+      setStartDateState(formatted); // raw value
+      if (endDateState) {
+        const days = differenceInDays(new Date(endDateState), parsedDate);
         setTotalDays(days > 0 ? days : 0);
       }
     } else {
-      setEndDate(formatted);
-      if (startDate) {
-        const days = differenceInDays(parsedDate, new Date(startDate));
+      setEndDateState(formatted);
+      if (startDateState) {
+        const days = differenceInDays(parsedDate, new Date(startDateState));
         setTotalDays(days > 0 ? days : 0);
       }
     }
   };
 
   return (
-    <Modal
-      isOpen={isModalOpen}
-      // onRequestClose={closeModal}
-      style={customStyles}
-      className={""}
-    >
+    <Modal isOpen={isModalOpen} style={customStyles} className={""}>
       <div className="bg-base-100 px-6 py-3">
-        <div className="space-y-1">
-          <h1 className="text-lg  font-semibold ">Booking confirmation</h1>
-          <h1 className=" font-">You are booking: {model}</h1>
-          <p className="font-">
-            Price Per Day:{" "}
-            <span className="font-normal text-[#010101]">${rentalPrice}</span>
-          </p>
-          <p className="font-">
-            Availability:{" "}
-            <span className="font-normal text-[#000000]">
-              {availability === "available" ? "✅Yes" : "❌No"}
-            </span>
-          </p>
-        </div>
-        <form onSubmit={handleBooking}>
+        <h1 className="text-lg  font-semibold ">Modify Booking dates</h1>
+        <form onSubmit={handleUpdateBooking}>
           <fieldset className="fieldset">
             <legend className="fieldset-legend">Start date:</legend>
             <input
@@ -149,7 +121,7 @@ const BookingDiolog = ({
             />
           </fieldset>
           <h1 className="mt-1 font-semibold ">
-            Total cost: {totalDays * rentalPrice}
+            Total cost: {totalDays * perdayPrice}
           </h1>
           <div className="flex gap-2 pt-5 justify-end">
             <button
@@ -160,7 +132,7 @@ const BookingDiolog = ({
               Cancel
             </button>
             <button type="submit" className="btn  btn-success ">
-              Add booking
+              Confirm
             </button>
           </div>
         </form>
@@ -169,4 +141,4 @@ const BookingDiolog = ({
   );
 };
 
-export default BookingDiolog;
+export default BookingUpdateDiolog;
