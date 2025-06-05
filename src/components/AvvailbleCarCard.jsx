@@ -5,9 +5,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import { Link } from "react-router";
 
 const AvvailbleCarCard = ({ car, isLayoutGrid }) => {
-  //   console.log(car);
-  const { model, bookingCount, availability, location, rentalPrice, image } =
-    car;
+  const { _id, model, bookingCount, location, rentalPrice, image } = car;
   return (
     <div
       className={`flex ${
@@ -51,7 +49,7 @@ const AvvailbleCarCard = ({ car, isLayoutGrid }) => {
         <div
           className={`card-actions ${isLayoutGrid ? "justify-end " : "mt-3"}`}
         >
-          <Link to={"/"}>
+          <Link to={`/car/${_id}`}>
             <button className="btn btn-primary">Book Now</button>
           </Link>
         </div>

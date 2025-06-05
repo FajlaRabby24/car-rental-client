@@ -8,7 +8,7 @@ import RegisterPage from "../pages/RegisterPage";
 import PrivateRoute from "./PrivateRouter";
 import AddCars from "../pages/AddCars";
 import MyCarPage from "../pages/MyCarPage";
-import axios from "axios";
+import CarDetailsPage from "../pages/CarDetailsPage";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +38,16 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyCarPage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "car/:id",
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_root_api_url}/car/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <CarDetailsPage />
           </PrivateRoute>
         ),
       },
