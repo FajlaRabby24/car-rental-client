@@ -18,6 +18,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
+        loader: () => fetch(`${import.meta.env.VITE_root_api_url}/recent-list`),
         Component: HomePage,
       },
       {
