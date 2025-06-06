@@ -4,6 +4,8 @@ import booking from "../../assets/images/booking.png";
 import price from "../../assets/images/price.png";
 import support from "../../assets/images/support.png";
 import WhyChooseUsCard from "../../components/WhyChooseUsCard";
+import { motion } from "motion/react";
+import useFadeAnimation from "../../hooks/useFadeAnimation";
 
 const whyChooseUsInfo = [
   {
@@ -39,7 +41,14 @@ const whyChooseUsInfo = [
 const WhyChooseUs = () => {
   return (
     <div>
-      <h1 className="font-semibold text-4xl mb-8">Why Choose Us!</h1>
+      <motion.h1
+        variants={useFadeAnimation("up", 0)}
+        initial="hidden"
+        whileInView="show"
+        className="font-semibold text-4xl mb-8"
+      >
+        Why Choose Us!
+      </motion.h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {whyChooseUsInfo.map((item) => (
           <WhyChooseUsCard key={item.id} item={item} />

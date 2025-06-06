@@ -1,11 +1,18 @@
 import React from "react";
 import { useState } from "react";
 import { FaCheckSquare, FaEdit } from "react-icons/fa";
+import { SlCalender } from "react-icons/sl";
 import { MdDelete } from "react-icons/md";
 import BookingUpdateDiolog from "./BookingUpdateDiolog";
+import BookingStatusUpdateDiolog from "./BookingStatusUpdateDiolog";
 
-const MyBookingCarsTr = ({ car, handleUpdateUi }) => {
+const MyBookingCarsTr = ({
+  car,
+  handleUpdateUi,
+  handleUpdateUiAfterCanceled,
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const {
     bookingDate,
     email,
@@ -60,12 +67,21 @@ const MyBookingCarsTr = ({ car, handleUpdateUi }) => {
 
       <td className="space-x-2">
         <button className="btn p-2" onClick={() => setIsModalOpen(true)}>
-          <FaEdit size={20} />
+          <SlCalender size={20} />
         </button>
-        <button className="btn p-2">
+        <button className="btn p-2" onClick={() => setIsDeleteModalOpen(true)}>
           <MdDelete size={20} color="" />
         </button>
       </td>
+      {isDeleteModalOpen && (
+        <BookingStatusUpdateDiolog
+          car={car}
+          isDeleteModalOpen={isDeleteModalOpen}
+          setIsDeleteModalOpen={setIsDeleteModalOpen}
+          handleUpdateUiAfterCanceled={handleUpdateUiAfterCanceled}
+        />
+      )}
+
       {isModalOpen && (
         <BookingUpdateDiolog
           isModalOpen={isModalOpen}

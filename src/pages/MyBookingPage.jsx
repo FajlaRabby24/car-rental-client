@@ -18,7 +18,6 @@ const MyBookingPage = () => {
         `${import.meta.env.VITE_root_api_url}/my-bookings?email=${user.email}`
       )
       .then((res) => {
-        console.log(res.data);
         setMyBookings(res.data);
       });
   }, [axiosSecure, user]);
@@ -27,6 +26,15 @@ const MyBookingPage = () => {
   const handleUpdateUi = (updatedCar) => {
     setMyBookings((prevCars) =>
       prevCars.map((car) => (car._id === updatedCar._id ? updatedCar : car))
+    );
+  };
+
+  // handleUpdateUiAfterCanceled
+  const handleUpdateUiAfterCanceled = (updateBooking) => {
+    setMyBookings((prev) =>
+      prev.map((book) =>
+        book._id === updateBooking._id ? updateBooking : book
+      )
     );
   };
 
@@ -53,6 +61,7 @@ const MyBookingPage = () => {
                 <MyBookingCarsTr
                   key={car._id}
                   car={car}
+                  handleUpdateUiAfterCanceled={handleUpdateUiAfterCanceled}
                   handleUpdateUi={handleUpdateUi}
                 />
               ))}
