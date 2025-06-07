@@ -11,6 +11,10 @@ import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 const Feedbacks = () => {
+  const [isMobile, setisMobile] = useState(window.innerWidth < 768);
+  const [isLaptop, setisLaptop] = useState(
+    window.innerWidth > 767 && window.innerWidth < 1024
+  );
   const [feedbacks, setFeedbacks] = useState([]);
 
   useEffect(() => {
@@ -20,16 +24,29 @@ const Feedbacks = () => {
         setFeedbacks(data);
       });
   }, []);
+
+  // calculate screen size
+  useEffect(() => {
+    const handleResize = () => {
+      setisMobile(window.innerWidth < 768);
+      setisLaptop(window.innerWidth > 767 && window.innerWidth < 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // call once initially
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div>
+    <div className="px-2">
       <h1 className="font-semibold text-4xl mb-8">Feedbacks</h1>
 
-      <div className=" slideImage-container">
-        <div className="container">
-          <div className=" mt-5">
+      <div className=" slideImage-container ">
+        <div className="w-full max-w-full px-0 mx-auto">
+          <div className=" mt-5 w-full ">
             <Swiper
               spaceBetween={30}
-              slidesPerView={4}
+              slidesPerView={isMobile ? 2 : isLaptop ? 3 : 4}
               autoplay={{
                 delay: 2000,
                 disableOnInteraction: false,
@@ -37,11 +54,11 @@ const Feedbacks = () => {
               loop={true}
               navigation={true}
               modules={[Autoplay, Pagination, Navigation]}
-              className="mySwiper"
+              className="mySwiper "
             >
               {feedbacks.map((feedback) => (
-                <SwiperSlide key={feedback.id}>
-                  <div className="bg-[#f8f8f8]  rounded-xl px-5 py-3">
+                <SwiperSlide key={feedback.id} className="w-full">
+                  <div className="bg-[#f8f8f8]  w-full  rounded-xl px-5 py-3">
                     <img
                       src={feedback.image}
                       alt="user image"
@@ -62,7 +79,11 @@ const Feedbacks = () => {
                       />
                     </div>
                     <h4 className="font-semibold text-lg">{feedback.name}</h4>
-                    <p className="text-[#636262]">{feedback.review}</p>
+                    <p className="text-[#636262]">
+                      {feedback.review.length > 70
+                        ? `${feedback.review.slice(0, 68)}...`
+                        : feedback.review}
+                    </p>
                   </div>
                 </SwiperSlide>
               ))}

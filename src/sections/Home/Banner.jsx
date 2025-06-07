@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 const Banner = () => {
   return (
-    <div className="flex items-center flex-col  md:flex-row-reverse h-screen px-3 lg:h-[80vh] ">
+    <div className="flex items-center flex-col  md:flex-row-reverse  lg:py-30 px-2 ">
       {/* image content  */}
       <div className="md:flex-1 ">
         <img src={bannerImg} className="w-full" alt="banner image" />
