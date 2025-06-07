@@ -9,6 +9,7 @@ const MyCarPage = () => {
   const [myCars, setMyCars] = useState([]);
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+
   useEffect(() => {
     axiosSecure
       .get(`${import.meta.env.VITE_root_api_url}/my-cars?email=${user.email}`)
@@ -27,11 +28,39 @@ const MyCarPage = () => {
     setMyCars((prev) => prev.filter((car) => car._id !== id));
   };
 
+  console.log(myCars);
+  // handlesort
+  const handleSort = (e) => {
+    const selected = e.target.value.toLowerCase();
+    let setCars;
+    // console.log(myBookings);
+    if (selected === "low") {
+      setCars = [...myCars].sort((a, b) => a.rentalPrice - b.rentalPrice);
+    } else {
+      setCars = [...myCars].sort((a, b) => b.rentalPrice - a.rentalPrice);
+    }
+
+    setMyCars(setCars);
+  };
+
   return (
     <div className="pt-12 pb-40">
-      <h1 className="text-2xl md:text-3xl font-bold md:font-semibold mb-6">
-        My Cars
-      </h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl md:text-3xl font-bold md:font-semibold mb-6">
+          My Cars
+        </h1>
+        {/* sorting option */}
+        <select
+          name="sort"
+          onChange={handleSort}
+          defaultValue="Sort by price"
+          className="select w-fit"
+        >
+          <option disabled={true}>Sort by price</option>
+          <option value={"low"}>Lowest first</option>
+          <option value={"high"}>Highest first</option>
+        </select>
+      </div>
       {myCars.length ? (
         <div className="overflow-x-auto">
           <table className="table">

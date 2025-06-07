@@ -102,12 +102,7 @@ const BookingDiolog = ({
   };
 
   return (
-    <Modal
-      isOpen={isModalOpen}
-      // onRequestClose={closeModal}
-      style={customStyles}
-      className={""}
-    >
+    <Modal isOpen={isModalOpen} style={customStyles}>
       <div className="bg-base-100 px-6 py-3">
         <div className="space-y-1">
           <h1 className="text-lg  font-semibold ">Booking confirmation</h1>

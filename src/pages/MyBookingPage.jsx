@@ -22,14 +22,14 @@ const MyBookingPage = () => {
       });
   }, [axiosSecure, user]);
 
-  // handle update ui
+  // handle update ui after booking
   const handleUpdateUi = (updatedCar) => {
     setMyBookings((prevCars) =>
       prevCars.map((car) => (car._id === updatedCar._id ? updatedCar : car))
     );
   };
 
-  // handleUpdateUiAfterCanceled
+  // handle Update Ui After Canceled
   const handleUpdateUiAfterCanceled = (updateBooking) => {
     setMyBookings((prev) =>
       prev.map((book) =>
@@ -38,8 +38,38 @@ const MyBookingPage = () => {
     );
   };
 
+  // handlesort
+  const handleSort = (e) => {
+    const selected = e.target.value.toLowerCase();
+    let setCars;
+    // console.log(myBookings);
+    if (selected === "low") {
+      setCars = [...myBookings].sort((a, b) => a.totalPrice - b.totalPrice);
+    } else {
+      setCars = [...myBookings].sort((a, b) => b.totalPrice - a.totalPrice);
+    }
+
+    setMyBookings(setCars);
+  };
+
   return (
-    <div className="pt-16 pb-20">
+    <div className="pt-12 pb-20">
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl md:text-3xl font-bold md:font-semibold mb-6">
+          My Bookings
+        </h1>
+        {/* sorting option */}
+        <select
+          name="sort"
+          onChange={handleSort}
+          defaultValue="Sort by price"
+          className="select w-fit"
+        >
+          <option disabled={true}>Sort by price</option>
+          <option value={"low"}>Lowest first</option>
+          <option value={"high"}>Highest first</option>
+        </select>
+      </div>
       {myBookings.length ? (
         <div className="overflow-x-auto">
           <table className="table">
