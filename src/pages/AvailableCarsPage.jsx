@@ -1,16 +1,45 @@
 import React from "react";
 import { useState } from "react";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import AvvailbleCarCard from "../components/AvvailbleCarCard";
+import { useEffect } from "react";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import NoCars from "../sections/My cars/NoCars";
 
 const AvailableCarsPage = () => {
   const initialAvailableCars = useLoaderData();
   const [availableCars, setAvailableCars] = useState(initialAvailableCars);
   const [isLayoutGrid, setIsLayoutGrid] = useState(true);
 
+  const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    const delayDebounce = setTimeout(() => {
+      if (!query.trim()) {
+        setAvailableCars(initialAvailableCars);
+        return;
+      }
+
+      fetch(`${import.meta.env.VITE_root_api_url}/car?search=${query}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.length) {
+            setAvailableCars(data);
+          } else {
+            setAvailableCars([]);
+          }
+        })
+        .catch((err) => {
+          setAvailableCars([]);
+        });
+    }, 500);
+
+    return () => clearTimeout(delayDebounce);
+  }, [query, initialAvailableCars]);
+
+  // handlesort
   const handleSort = (e) => {
     const selected = e.target.value.toLowerCase();
-    console.log(selected);
     let setCars;
 
     if (selected === "low") {
@@ -25,6 +54,7 @@ const AvailableCarsPage = () => {
 
     setAvailableCars(setCars);
   };
+
   return (
     <div className="pt-12 pb-40">
       <div className="flex items-center justify-between mb-3">
@@ -45,7 +75,12 @@ const AvailableCarsPage = () => {
               <path d="m21 21-4.3-4.3"></path>
             </g>
           </svg>
-          <input type="search" required placeholder="Search" />
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search something.."
+          />
         </label>
 
         {/* sort option  */}
@@ -86,14 +121,11 @@ const AvailableCarsPage = () => {
       ) : (
         <NoCars>
           <h1 className="text-2xl font-semibold text-center mb-1">
-            You have no Cars!
+            There is no car with this name{" "}
+            <span className="text-yellow-500 underline">{query}</span>
           </h1>
-          <p className="font-semibold">
-            Please add a car from{" "}
-            <Link to={"/add-cars"} className="text-warning hover:underline">
-              add-cars
-            </Link>{" "}
-            page
+          <p className="font-semibold text-center">
+            Please search with another name.
           </p>
         </NoCars>
       )}
