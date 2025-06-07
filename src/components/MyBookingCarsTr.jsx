@@ -66,10 +66,18 @@ const MyBookingCarsTr = ({
       </td>
 
       <td className="space-x-2">
-        <button className="btn p-2" onClick={() => setIsModalOpen(true)}>
-          <SlCalender size={20} />
+        <button
+          className="btn p-2 btn-info"
+          disabled={status !== "confirmed"}
+          onClick={() => setIsModalOpen(true)}
+        >
+          <SlCalender color="white" size={20} />
         </button>
-        <button className="btn p-2" onClick={() => setIsDeleteModalOpen(true)}>
+        <button
+          className="btn p-2 btn-error"
+          disabled={status !== "confirmed"}
+          onClick={() => setIsDeleteModalOpen(true)}
+        >
           <MdDelete size={20} color="" />
         </button>
       </td>
