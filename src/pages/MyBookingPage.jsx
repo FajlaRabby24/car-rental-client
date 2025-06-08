@@ -75,7 +75,7 @@ const MyBookingPage = () => {
           <table className="table">
             {/* head */}
             <thead>
-              <tr>
+              <tr className="bg-[#e7e7e7] rounded ">
                 <th>Image</th>
                 <th>Modal</th>
                 <th>Booking Date</th>

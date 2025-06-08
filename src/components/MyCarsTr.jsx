@@ -44,7 +44,7 @@ const MyCarsTr = ({ car, handleUpdateUi, handleUpdateUiAfterCarDeleted }) => {
     });
   };
   return (
-    <tr>
+    <tr className="hover:bg-base-200">
       <td>
         <div className="flex items-center gap-3">
           <div className="avatar">
