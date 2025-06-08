@@ -16,7 +16,7 @@ const RecentCarCard = ({ car }) => {
     >
       <figure className="rounded-t-xl">
         <img
-          className={`max-h-[277px] lg:min-w-[415px] rounded-xl w-full object-cover`}
+          className={`max-h-[277px] rounded-xl w-full object-cover`}
           src={image}
           alt="car image"
         />
