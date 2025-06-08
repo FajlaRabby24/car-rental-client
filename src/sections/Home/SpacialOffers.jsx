@@ -40,6 +40,8 @@ const SpacialOffers = () => {
             <p className="font-medium">
               Enjoy 15% off on all weekend luxury car rentals this holiday
               season! Cruise in style and save big on your perfect getaway ride.
+              Don’t miss this limited-time offer to experience premium cars at
+              unbeatable prices. Book your weekend now!
             </p>
             <div className="card-actions pt-3">
               <Link to={"/available-cars"}>
