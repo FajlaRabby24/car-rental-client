@@ -10,3 +10,10 @@ body {
 a.active {
   @apply border-b-3 border-orange-500;
 }
+
+.bg {
+  @apply bg-red-600;
+}
+.bg2 {
+  @apply bg-green-600;
+}

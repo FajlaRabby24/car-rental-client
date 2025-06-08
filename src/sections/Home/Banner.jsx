@@ -1,16 +1,15 @@
-import React from "react";
+import React, { Suspense } from "react";
 import bannerImg from "../../assets/images/bannerImg.png";
 import { Link } from "react-router";
+import Banner3DModel from "./Banner3DModel";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 
 const Banner = () => {
   return (
-    <div className="flex items-center flex-col  lg:flex-row-reverse  lg:py-30 px-2 ">
-      {/* image content  */}
-      <div className="md:flex-1">
-        <img src={bannerImg} className="w-full" alt="banner image" />
-      </div>
+    <div className="flex  flex-col h-[calc(100vh-71px)]    px-2 xl:px-0 ">
       {/* text content  */}
-      <div className="space-y-2  md:space-y-3 flex-1">
+      <div className="space-y-2 text-center pt-9 md:space-y-3 ">
         <h1 className="text-4xl md:text-6xl font-bold md:font-semibold leading-12 md:leading-18">
           Drive Your Dreams Today!
         </h1>
@@ -28,6 +27,24 @@ const Banner = () => {
         <Link to={"/available-cars"}>
           <button className="btn btn-lg btn-warning">View Avalable Cars</button>
         </Link>
+      </div>
+      {/* image content  */}
+      <div className="md:flex-1 pt-3">
+        {/* <img src={bannerImg} className="w-full" alt="banner i mage" /> */}
+        <Canvas camera={{ position: [5, 3, 5], fov: 35 }}>
+          <ambientLight intensity={1} />
+          <directionalLight position={[5, 6, 5]} />
+          <Suspense fallback={"3D model loading..."}>
+            <Banner3DModel />
+          </Suspense>
+          <OrbitControls
+            enableZoom={false}
+            minPolarAngle={Math.PI / 3}
+            maxPolarAngle={Math.PI / 3}
+            minAzimuthAngle={-Infinity}
+            maxAzimuthAngle={Infinity}
+          />
+        </Canvas>
       </div>
     </div>
   );
