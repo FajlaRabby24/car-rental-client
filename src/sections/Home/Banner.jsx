@@ -4,13 +4,13 @@ import { Link } from "react-router";
 
 const Banner = () => {
   return (
-    <div className="flex items-center flex-col  md:flex-row-reverse  lg:py-30 px-2 ">
+    <div className="flex items-center flex-col  lg:flex-row-reverse  lg:py-30 px-2 ">
       {/* image content  */}
-      <div className="md:flex-1 ">
+      <div className="md:flex-1">
         <img src={bannerImg} className="w-full" alt="banner image" />
       </div>
       {/* text content  */}
-      <div className="space-y-2 md:space-y-3 flex-1">
+      <div className="space-y-2  md:space-y-3 flex-1">
         <h1 className="text-4xl md:text-6xl font-bold md:font-semibold leading-12 md:leading-18">
           Drive Your Dreams Today!
         </h1>
