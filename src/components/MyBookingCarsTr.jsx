@@ -65,7 +65,7 @@ const MyBookingCarsTr = ({
         </p>
       </td>
 
-      <td className="space-x-2">
+      <td className="space-y-1 space-x-2">
         <button
           className="btn p-2 btn-info"
           disabled={status !== "confirmed"}

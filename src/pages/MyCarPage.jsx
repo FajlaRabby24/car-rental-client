@@ -44,7 +44,7 @@ const MyCarPage = () => {
   };
 
   return (
-    <div className="pt-12 pb-40">
+    <div className="pt-12 pb-40 px-2">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl md:text-3xl font-bold md:font-semibold mb-6">
           My Cars

@@ -56,8 +56,8 @@ const AvailableCarsPage = () => {
   };
 
   return (
-    <div className="pt-12 pb-40">
-      <div className="flex items-center justify-between mb-3">
+    <div className="pt-5 md:pt-12 pb-40 px-2">
+      <div className="flex items-center justify-between gap-3 mb-3">
         <label className="input">
           <svg
             className="h-[1em] opacity-50"
@@ -98,7 +98,7 @@ const AvailableCarsPage = () => {
           {/* toggle to view  */}
           <button
             onClick={() => setIsLayoutGrid((prev) => !prev)}
-            className="btn"
+            className="btn hidden md:block"
           >
             Toggle to {isLayoutGrid ? "List" : "Grid"}
           </button>

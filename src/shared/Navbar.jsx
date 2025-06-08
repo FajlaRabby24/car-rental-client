@@ -9,7 +9,7 @@ const Navbar = () => {
   const { user, signOutUser } = useAuth();
 
   const links = (
-    <div className="flex items-center gap-3">
+    <>
       <li>
         <NavLink className={"font-semibold"} to={"/"}>
           Home
@@ -39,7 +39,7 @@ const Navbar = () => {
           </li>
         </>
       )}
-    </div>
+    </>
   );
 
   // sign out user

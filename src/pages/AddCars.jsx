@@ -43,7 +43,7 @@ const AddCars = () => {
   };
 
   return (
-    <div className="pt-16 px-3 pb-40">
+    <div className="pt-5 md:pt-16 px-2 pb-40">
       <h1 className="text-2xl md:text-3xl font-bold md:font-semibold text-center">
         Add Cars
       </h1>

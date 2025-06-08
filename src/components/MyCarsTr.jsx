@@ -71,12 +71,18 @@ const MyCarsTr = ({ car, handleUpdateUi, handleUpdateUiAfterCarDeleted }) => {
         <p>{bookingCount}</p>
       </td>
       <td>{date}</td>
-      <td className="space-x-2">
-        <button className="btn p-2" onClick={() => setIsModalOpen(true)}>
-          <FaEdit size={20} />
+      <td className="space-y-1 space-x-2">
+        <button
+          className="btn btn-info p-2"
+          onClick={() => setIsModalOpen(true)}
+        >
+          <FaEdit size={20} className="white" />
         </button>
-        <button className="btn p-2" onClick={() => handleDeleteCar(_id)}>
-          <MdDelete size={20} color="" />
+        <button
+          className="btn btn-error p-2"
+          onClick={() => handleDeleteCar(_id)}
+        >
+          <MdDelete size={20} />
         </button>
       </td>
       {isModalOpen && (

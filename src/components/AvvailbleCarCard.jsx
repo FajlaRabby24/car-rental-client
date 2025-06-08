@@ -16,7 +16,7 @@ const AvvailbleCarCard = ({ car, isLayoutGrid }) => {
     >
       <figure className="rounded-t-xl">
         <img
-          className={`max-h-[277px] min-w-[415px] rounded-xl w-full object-cover`}
+          className={`max-h-[277px] md:min-w-[415px] rounded-xl w-full object-cover`}
           src={image}
           alt="car image"
         />
