@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import Loading from "../components/Loading";
 import MyCarsTr from "../components/MyCarsTr";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
@@ -7,13 +8,17 @@ import NoCars from "../sections/My cars/NoCars";
 
 const MyCarPage = () => {
   const [myCars, setMyCars] = useState([]);
+  const [loading, setLoading] = useState(true);
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
   useEffect(() => {
     axiosSecure
       .get(`${import.meta.env.VITE_root_api_url}/my-cars?email=${user.email}`)
-      .then((res) => setMyCars(res.data));
+      .then((res) => {
+        setMyCars(res.data);
+        setLoading(false);
+      });
   }, [user, axiosSecure]);
 
   // update ui
@@ -59,7 +64,9 @@ const MyCarPage = () => {
           <option value={"high"}>Highest first</option>
         </select>
       </div>
-      {myCars.length ? (
+      {loading ? (
+        <Loading />
+      ) : myCars.length ? (
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}

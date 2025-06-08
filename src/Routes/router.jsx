@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router";
+import Loading from "../components/Loading";
 import MainLayout from "../layout/MainLayout";
 import AddCars from "../pages/AddCars";
 import AvailableCarsPage from "../pages/AvailableCarsPage";
@@ -18,11 +19,12 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch(`${import.meta.env.VITE_root_api_url}/recent-list`),
         Component: HomePage,
+        hydrateFallbackElement: <Loading />,
       },
       {
         path: "available-cars",
+        hydrateFallbackElement: <Loading />,
         loader: () =>
           fetch(`${import.meta.env.VITE_root_api_url}/available-cars`),
         Component: AvailableCarsPage,
@@ -53,6 +55,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "car/:id",
+        hydrateFallbackElement: <Loading />,
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_root_api_url}/car/${params.id}`),
         element: (

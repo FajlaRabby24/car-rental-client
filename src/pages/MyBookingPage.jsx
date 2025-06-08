@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import Loading from "../components/Loading";
 import MyBookingCarsTr from "../components/MyBookingCarsTr";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
@@ -7,6 +8,7 @@ import NoCars from "../sections/My cars/NoCars";
 
 const MyBookingPage = () => {
   const [myBookings, setMyBookings] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
@@ -17,6 +19,7 @@ const MyBookingPage = () => {
       )
       .then((res) => {
         setMyBookings(res.data);
+        setLoading(false);
       });
   }, [axiosSecure, user]);
 
@@ -67,7 +70,9 @@ const MyBookingPage = () => {
           <option value={"high"}>Highest first</option>
         </select>
       </div>
-      {myBookings.length ? (
+      {loading ? (
+        <Loading />
+      ) : myBookings.length ? (
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}

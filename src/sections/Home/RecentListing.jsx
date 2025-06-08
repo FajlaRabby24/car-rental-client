@@ -1,14 +1,28 @@
-import { useState } from "react";
+import { memo, use, useEffect, useState } from "react";
 import RecentCarCard from "../../components/RecentCarCard";
 import NoCars from "../My cars/NoCars";
+import { Link } from "react-router";
+import Loading from "../../components/Loading";
 
-const RecentListing = ({ data }) => {
-  const [recentCars, setRecentCars] = useState(data);
+const RecentListing = () => {
+  const [recentCars, setRecentCars] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_root_api_url}/recent-list`)
+      .then((res) => res.json())
+      .then((data) => {
+        setRecentCars(data);
+        setLoading(false);
+      });
+  }, []);
 
   return (
     <div className="px-2  ">
       <h1 className="font-semibold text-4xl mb-8">Recent List</h1>
-      {recentCars.length ? (
+      {loading ? (
+        <Loading />
+      ) : recentCars.length ? (
         <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4`}>
           {recentCars.map((car) => (
             <RecentCarCard car={car} key={car._id} />
@@ -32,4 +46,4 @@ const RecentListing = ({ data }) => {
   );
 };
 
-export default RecentListing;
+export default memo(RecentListing);
