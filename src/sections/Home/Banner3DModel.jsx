@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
+import { useEffect, useRef, useState } from "react";
 
 const Banner3DModel = () => {
   const [isMobile, setisMobile] = useState(window.innerWidth < 768);

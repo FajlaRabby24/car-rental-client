@@ -37,15 +37,12 @@ const BookingStatusUpdateDiolog = ({
         updatedCarObj
       )
       .then((res) => {
-        console.log(res.data);
         if (res.data.modifiedCount) {
           handleUpdateUiAfterCanceled({ _id, ...updatedCarObj });
           closeModal();
         }
       });
   };
-
-  console.log(car);
 
   return (
     <Modal

@@ -1,15 +1,15 @@
 import { createBrowserRouter } from "react-router";
 import MainLayout from "../layout/MainLayout";
-import HomePage from "../pages/HomePage";
-import NotFoundPage from "../pages/NotFoundPage";
+import AddCars from "../pages/AddCars";
 import AvailableCarsPage from "../pages/AvailableCarsPage";
+import CarDetailsPage from "../pages/CarDetailsPage";
+import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
+import MyBookingPage from "../pages/MyBookingPage";
+import MyCarPage from "../pages/MyCarPage";
+import NotFoundPage from "../pages/NotFoundPage";
 import RegisterPage from "../pages/RegisterPage";
 import PrivateRoute from "./PrivateRouter";
-import AddCars from "../pages/AddCars";
-import MyCarPage from "../pages/MyCarPage";
-import CarDetailsPage from "../pages/CarDetailsPage";
-import MyBookingPage from "../pages/MyBookingPage";
 
 export const router = createBrowserRouter([
   {

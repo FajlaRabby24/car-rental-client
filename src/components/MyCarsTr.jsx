@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { ImCross } from "react-icons/im";
-import Swal from "sweetalert2";
 import { MdDelete } from "react-icons/md";
+import Swal from "sweetalert2";
 
 import { FaCheckSquare, FaEdit } from "react-icons/fa";
-import CarUpdateDiolog from "./CarUpdateDiolog";
-import useAxiosSecure from "../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import CarUpdateDiolog from "./CarUpdateDiolog";
 
 const MyCarsTr = ({ car, handleUpdateUi, handleUpdateUiAfterCarDeleted }) => {
   const axiosSecure = useAxiosSecure();
@@ -30,7 +30,6 @@ const MyCarsTr = ({ car, handleUpdateUi, handleUpdateUiAfterCarDeleted }) => {
         axiosSecure
           .delete(`${import.meta.env.VITE_root_api_url}/delete-car/${id}`)
           .then((res) => {
-            console.log(res.data);
             if (res.data.deletedCount) {
               toast.success("Car deleted successfully!");
             }

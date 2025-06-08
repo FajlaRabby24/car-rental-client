@@ -1,11 +1,9 @@
-import React from "react";
-import { useEffect } from "react";
-import useAxiosSecure from "../hooks/useAxiosSecure";
-import useAuth from "../hooks/useAuth";
-import { useState } from "react";
-import NoCars from "../sections/My cars/NoCars";
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import MyBookingCarsTr from "../components/MyBookingCarsTr";
+import useAuth from "../hooks/useAuth";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import NoCars from "../sections/My cars/NoCars";
 
 const MyBookingPage = () => {
   const [myBookings, setMyBookings] = useState([]);
@@ -42,7 +40,6 @@ const MyBookingPage = () => {
   const handleSort = (e) => {
     const selected = e.target.value.toLowerCase();
     let setCars;
-    // console.log(myBookings);
     if (selected === "low") {
       setCars = [...myBookings].sort((a, b) => a.totalPrice - b.totalPrice);
     } else {

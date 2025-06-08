@@ -1,11 +1,8 @@
-import { differenceInDays, differenceInMilliseconds, format } from "date-fns";
+import { differenceInDays, format } from "date-fns";
 import { useState } from "react";
 import Modal from "react-modal";
 import { toast } from "react-toastify";
-import useTime from "../hooks/useTime";
-import useDate from "../hooks/useDate";
 import useAuth from "../hooks/useAuth";
-import axios from "axios";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const customStyles = {

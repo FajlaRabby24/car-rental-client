@@ -1,9 +1,8 @@
-import React from "react";
 import { Link, NavLink } from "react-router";
-import logo from "../assets/images/logo.png";
-import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
 import defaultUser from "../assets/images/defaultUser.png";
+import logo from "../assets/images/logo.png";
+import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
   const { user, signOutUser } = useAuth();

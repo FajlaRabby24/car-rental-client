@@ -1,8 +1,6 @@
-import React from "react";
 import { useState } from "react";
-import NoCars from "../My cars/NoCars";
-import AvvailbleCarCard from "../../components/AvvailbleCarCard";
 import RecentCarCard from "../../components/RecentCarCard";
+import NoCars from "../My cars/NoCars";
 
 const RecentListing = ({ data }) => {
   const [recentCars, setRecentCars] = useState(data);

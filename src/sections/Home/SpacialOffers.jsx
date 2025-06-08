@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router";
 import offers1 from "../../assets/images/offers1.jpg";
 import offers2 from "../../assets/images/offers2.jpg";

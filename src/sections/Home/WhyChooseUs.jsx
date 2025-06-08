@@ -1,6 +1,5 @@
-import React from "react";
-import cars from "../../assets/images/cars.png";
 import booking from "../../assets/images/booking.png";
+import cars from "../../assets/images/cars.png";
 import price from "../../assets/images/price.png";
 import support from "../../assets/images/support.png";
 import WhyChooseUsCard from "../../components/WhyChooseUsCard";

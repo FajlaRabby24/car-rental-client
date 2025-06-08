@@ -1,15 +1,12 @@
-import axios from "axios";
-import React, { useLayoutEffect } from "react";
+import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import { toast } from "react-toastify";
 import useDate from "../hooks/useDate";
 
 const AddCars = () => {
   const axiosSecure = useAxiosSecure();
   const currentDate = useDate();
   const { user } = useAuth();
-  console.log(currentDate);
 
   const handleAddCar = (e) => {
     e.preventDefault();

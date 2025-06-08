@@ -1,7 +1,6 @@
 import axios from "axios";
-import React from "react";
-import useAuth from "./useAuth";
 import { toast } from "react-toastify";
+import useAuth from "./useAuth";
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_root_api_url,
@@ -20,7 +19,6 @@ const useAxiosSecure = () => {
   axiosInstance.interceptors.response.use(
     (res) => res,
     (err) => {
-      console.log(err);
       if (err.status === 401 || err.status === 403) {
         signOutUser()
           .then(() => {

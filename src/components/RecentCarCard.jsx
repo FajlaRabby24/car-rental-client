@@ -1,10 +1,8 @@
 import { formatDistanceToNow } from "date-fns";
-import React from "react";
 import { FaCar, FaCarSide, FaCheckSquare } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
-import { IoLocationOutline, IoTime } from "react-icons/io5";
+import { IoTime } from "react-icons/io5";
 import { MdOutlineAttachMoney } from "react-icons/md";
-import { Link } from "react-router";
 
 const RecentCarCard = ({ car }) => {
   const { _id, model, bookingCount, date, rentalPrice, image, availability } =

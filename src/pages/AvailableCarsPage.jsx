@@ -1,9 +1,6 @@
-import React from "react";
-import { useState } from "react";
-import { Link, useLoaderData } from "react-router";
+import { useEffect, useState } from "react";
+import { useLoaderData } from "react-router";
 import AvvailbleCarCard from "../components/AvvailbleCarCard";
-import { useEffect } from "react";
-import useAxiosSecure from "../hooks/useAxiosSecure";
 import NoCars from "../sections/My cars/NoCars";
 
 const AvailableCarsPage = () => {

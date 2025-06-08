@@ -1,9 +1,8 @@
-import React, { Suspense } from "react";
-import bannerImg from "../../assets/images/bannerImg.png";
+import { OrbitControls } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
 import { Link } from "react-router";
 import Banner3DModel from "./Banner3DModel";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
 
 const Banner = () => {
   return (

@@ -1,10 +1,9 @@
-import React from "react";
+import { useLoaderData } from "react-router";
 import Banner from "../sections/Home/Banner";
-import WhyChooseUs from "../sections/Home/WhyChooseUs";
+import Feedbacks from "../sections/Home/Feedbacks";
 import RecentListing from "../sections/Home/RecentListing";
 import SpacialOffers from "../sections/Home/SpacialOffers";
-import Feedbacks from "../sections/Home/Feedbacks";
-import { useLoaderData } from "react-router";
+import WhyChooseUs from "../sections/Home/WhyChooseUs";
 
 const HomePage = () => {
   const recentCars = useLoaderData();

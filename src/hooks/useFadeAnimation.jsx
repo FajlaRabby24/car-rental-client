@@ -1,5 +1,3 @@
-import React from "react";
-
 const useFadeAnimation = (direction, delay) => {
   return {
     hidden: {

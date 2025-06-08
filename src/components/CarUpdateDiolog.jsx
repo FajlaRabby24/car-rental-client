@@ -1,11 +1,7 @@
-import { format } from "date-fns";
-import { use, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import Modal from "react-modal";
 import { toast } from "react-toastify";
-import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import useDate from "../hooks/useDate";
 
 const customStyles = {
   content: {
@@ -26,7 +22,6 @@ const CarUpdateDiolog = ({
   car,
   handleUpdateUi,
 }) => {
-  console.log(car);
   const {
     _id,
     bookingCount,
@@ -73,7 +68,6 @@ const CarUpdateDiolog = ({
     axiosSecure
       .put(`${import.meta.env.VITE_root_api_url}/update-car/${_id}`, updateCar)
       .then((res) => {
-        console.log(res.data);
         if (res.data.modifiedCount) {
           toast.success("Car updated successfully!");
           closeModal();

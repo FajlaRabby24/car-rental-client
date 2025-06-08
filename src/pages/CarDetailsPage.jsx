@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaCar } from "react-icons/fa";
-import { MdKeyboardArrowLeft, MdOutlineRateReview } from "react-icons/md";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useLoaderData, useNavigate } from "react-router";
 import BookingDiolog from "../components/BookingDiolog";
 import useAuth from "../hooks/useAuth";

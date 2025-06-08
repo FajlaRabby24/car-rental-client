@@ -1,5 +1,3 @@
-import React from "react";
-
 const WhyChooseUsCard = ({ item }) => {
   const { title, description, image } = item;
   return (

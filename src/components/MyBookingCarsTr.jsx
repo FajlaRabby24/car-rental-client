@@ -1,10 +1,8 @@
-import React from "react";
 import { useState } from "react";
-import { FaCheckSquare, FaEdit } from "react-icons/fa";
-import { SlCalender } from "react-icons/sl";
 import { MdDelete } from "react-icons/md";
-import BookingUpdateDiolog from "./BookingUpdateDiolog";
+import { SlCalender } from "react-icons/sl";
 import BookingStatusUpdateDiolog from "./BookingStatusUpdateDiolog";
+import BookingUpdateDiolog from "./BookingUpdateDiolog";
 
 const MyBookingCarsTr = ({
   car,
