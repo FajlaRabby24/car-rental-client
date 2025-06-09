@@ -14,7 +14,7 @@ const MainLayout = () => {
 
   return (
     <div>
-      <header>
+      <header className="sticky top-0 backdrop-blur-xl z-50">
         <Navbar />
       </header>
       <main className="max-w-7xl mx-auto min-h-[calc(100vh-386px)]">
