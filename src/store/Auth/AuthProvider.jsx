@@ -50,7 +50,7 @@ const AuthPrivider = ({ children }) => {
     return () => {
       unSubscribe();
     };
-  });
+  }, []);
 
   const authValue = {
     signUpUser,

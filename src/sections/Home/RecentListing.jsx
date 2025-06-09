@@ -31,11 +31,11 @@ const RecentListing = () => {
       ) : (
         <NoCars>
           <h1 className="text-2xl font-semibold text-center mb-1">
-            You have no Cars!
+            Recently have no cars!
           </h1>
           <p className="font-semibold">
             Please add a car from{" "}
-            <Link to={"/add-cars"} className="text-warning hover:underline">
+            <Link to={"/add-cars"} className="text-warning underline">
               add-cars
             </Link>{" "}
             page

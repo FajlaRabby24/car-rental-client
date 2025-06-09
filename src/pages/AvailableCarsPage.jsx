@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import AvvailbleCarCard from "../components/AvvailbleCarCard";
 import NoCars from "../sections/My cars/NoCars";
 
@@ -118,11 +118,14 @@ const AvailableCarsPage = () => {
       ) : (
         <NoCars>
           <h1 className="text-2xl font-semibold text-center mb-1">
-            There is no car with this name{" "}
+            There is no car!
             <span className="text-yellow-500 underline">{query}</span>
           </h1>
           <p className="font-semibold text-center">
-            Please search with another name.
+            Please try again or add a{" "}
+            <Link to={"/add-cars"} className="text-warning underline">
+              cars
+            </Link>
           </p>
         </NoCars>
       )}
