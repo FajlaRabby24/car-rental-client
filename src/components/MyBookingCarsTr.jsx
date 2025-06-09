@@ -47,7 +47,7 @@ const MyBookingCarsTr = ({
         <p>{endDate}</p>
       </td>
       <td>
-        <p>{totalPrice}</p>
+        <p>${totalPrice}</p>
       </td>
       <td>
         <p>

@@ -121,7 +121,7 @@ const BookingUpdateDiolog = ({
             />
           </fieldset>
           <h1 className="mt-1 font-semibold ">
-            Total cost: {totalDays * perdayPrice}
+            Total cost: ${totalDays * perdayPrice}
           </h1>
           <div className="flex gap-2 pt-5 justify-end">
             <button
