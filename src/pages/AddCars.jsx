@@ -34,7 +34,7 @@ const AddCars = () => {
       .then((res) => {
         if (res.data.insertedId) {
           toast.success("Car added successfully!");
-          // form.reset()
+          form.reset();
         }
       });
   };
