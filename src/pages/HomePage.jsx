@@ -1,4 +1,3 @@
-import React from "react";
 import Banner from "../sections/Home/Banner";
 import Feedbacks from "../sections/Home/Feedbacks";
 import RecentListing from "../sections/Home/RecentListing";

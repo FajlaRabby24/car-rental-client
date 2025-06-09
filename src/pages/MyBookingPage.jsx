@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import { toast } from "react-toastify";
 import Loading from "../components/Loading";
 import MyBookingCarsTr from "../components/MyBookingCarsTr";
 import useAuth from "../hooks/useAuth";
@@ -20,6 +21,9 @@ const MyBookingPage = () => {
       .then((res) => {
         setMyBookings(res.data);
         setLoading(false);
+      })
+      .catch((err) => {
+        toast.error("There was an error! Please try again!");
       });
   }, [axiosSecure, user]);
 

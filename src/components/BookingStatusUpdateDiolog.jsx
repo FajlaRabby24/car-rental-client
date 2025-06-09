@@ -1,4 +1,5 @@
 import Modal from "react-modal";
+import { toast } from "react-toastify";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const customStyles = {
@@ -41,6 +42,9 @@ const BookingStatusUpdateDiolog = ({
           handleUpdateUiAfterCanceled({ _id, ...updatedCarObj });
           closeModal();
         }
+      })
+      .catch((err) => {
+        toast.error("There was an error! Please try again!");
       });
   };
 

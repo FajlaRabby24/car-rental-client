@@ -31,14 +31,16 @@ const MyCarsTr = ({ car, handleUpdateUi, handleUpdateUiAfterCarDeleted }) => {
           .delete(`${import.meta.env.VITE_root_api_url}/delete-car/${id}`)
           .then((res) => {
             if (res.data.deletedCount) {
-              toast.success("Car deleted successfully!");
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your car has been deleted.",
+                icon: "success",
+              });
             }
+          })
+          .catch((err) => {
+            toast.error("There was an error! Please try again!");
           });
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your car has been deleted.",
-          icon: "success",
-        });
       }
     });
   };

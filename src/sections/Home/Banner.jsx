@@ -1,6 +1,5 @@
-import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { memo, Suspense } from "react";
+import { memo } from "react";
 import { Link } from "react-router";
 import Banner3DModel from "./Banner3DModel";
 import LoaderOverlay from "./LoaderOverlay ";

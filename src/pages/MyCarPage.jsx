@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import { toast } from "react-toastify";
 import Loading from "../components/Loading";
 import MyCarsTr from "../components/MyCarsTr";
 import useAuth from "../hooks/useAuth";
@@ -18,6 +19,9 @@ const MyCarPage = () => {
       .then((res) => {
         setMyCars(res.data);
         setLoading(false);
+      })
+      .catch((err) => {
+        toast.error("There was an error! Please try again!");
       });
   }, [user, axiosSecure]);
 

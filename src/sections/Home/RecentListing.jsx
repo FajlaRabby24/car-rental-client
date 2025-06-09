@@ -1,8 +1,8 @@
-import { memo, use, useEffect, useState } from "react";
-import RecentCarCard from "../../components/RecentCarCard";
-import NoCars from "../My cars/NoCars";
+import { memo, useEffect, useState } from "react";
 import { Link } from "react-router";
 import Loading from "../../components/Loading";
+import RecentCarCard from "../../components/RecentCarCard";
+import NoCars from "../My cars/NoCars";
 
 const RecentListing = () => {
   const [recentCars, setRecentCars] = useState([]);

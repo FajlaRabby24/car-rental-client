@@ -1,6 +1,6 @@
 import { OrbitControls, useGLTF } from "@react-three/drei";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { memo, Suspense, use, useEffect, useRef, useState } from "react";
+import { useFrame } from "@react-three/fiber";
+import { Suspense, useEffect, useRef, useState } from "react";
 
 const Banner3DModel = () => {
   const [isMobile, setisMobile] = useState(window.innerWidth < 768);

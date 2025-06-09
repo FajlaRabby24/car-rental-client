@@ -71,8 +71,11 @@ const CarUpdateDiolog = ({
         if (res.data.modifiedCount) {
           toast.success("Car updated successfully!");
           closeModal();
-          // form.reset()
+          form.reset();
         }
+      })
+      .catch((err) => {
+        toast.error("There was an error! Please try again!");
       });
   };
 

@@ -65,6 +65,9 @@ const BookingUpdateDiolog = ({
           handleUpdateUi(updatedUiObj);
           closeModal();
         }
+      })
+      .catch((err) => {
+        toast.error("There was an error! Please try again!");
       });
   };
 
