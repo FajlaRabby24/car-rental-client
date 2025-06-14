@@ -2,7 +2,7 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { Suspense, useEffect, useRef, useState } from "react";
 
-const Banner3DModel = () => {
+const Banner3DModel = ({ onOver }) => {
   const [isMobile, setisMobile] = useState(window.innerWidth < 768);
   const { scene } = useGLTF("/model/car.glb", true);
   const modelRef = useRef(null);
@@ -19,7 +19,9 @@ const Banner3DModel = () => {
   }, []);
 
   useFrame(() => {
-    modelRef.current.rotation.y += -0.002;
+    if (!onOver) {
+      modelRef.current.rotation.y += -0.003;
+    }
   });
 
   return (

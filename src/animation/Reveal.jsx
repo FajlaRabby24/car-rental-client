@@ -1,7 +1,7 @@
 import { motion, useAnimation, useInView } from "motion/react";
 import { useEffect, useRef } from "react";
 
-const Reveal = ({ children }) => {
+const Reveal = ({ children, className }) => {
   const ref = useRef(null);
 
   const isInView = useInView(ref, { once: true });
@@ -14,7 +14,7 @@ const Reveal = ({ children }) => {
   }, [mainControls, isInView]);
 
   return (
-    <div ref={ref} className="relative overflow-hidden">
+    <div ref={ref} className={`relative overflow-hidden ${className}`}>
       <motion.div
         variants={{
           hidden: { opacity: 0, y: 75 },

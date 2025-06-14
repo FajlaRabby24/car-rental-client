@@ -9,8 +9,10 @@ const SpacialOffers = () => {
       <h1 className="font-semibold text-4xl mb-8">Spacial Offers</h1>
       <div className=" grid grid-cols-1 lg:grid-cols-2  gap-4">
         {/* box 1  */}
-        <Reveal>
-          <div className="flex flex-1 flex-col  gap-8 bg-[#f8f8f8] rounded-lg">
+        <Reveal
+          className={`hover:-translate-y-4  gap-6 bg-[#f8f8f8] transition-all`}
+        >
+          <div className="flex flex-1 flex-col  rounded-lg">
             <figure>
               <img
                 src={offers1}
@@ -38,8 +40,10 @@ const SpacialOffers = () => {
           </div>
         </Reveal>
         {/* box 2  */}
-        <Reveal>
-          <div className="flex flex-1 flex-col  gap-8 bg-[#f8f8f8] rounded-lg">
+        <Reveal
+          className={`hover:-translate-y-4  gap-6 bg-[#f8f8f8] transition-all`}
+        >
+          <div className="flex flex-1 flex-col  gap-6 bg-[#f8f8f8] rounded-lg">
             <figure>
               <img
                 src={offers2}

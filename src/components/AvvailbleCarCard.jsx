@@ -8,20 +8,20 @@ const AvvailbleCarCard = ({ car, isLayoutGrid }) => {
   const { _id, model, bookingCount, location, rentalPrice, image, owner } = car;
 
   return (
-    <Reveal>
+    <Reveal
+      className={`hover:-translate-y-4  gap-6 bg-[#f8f8f8] transition-all`}
+    >
       <div
-        className={`flex ${
-          isLayoutGrid ? "flex-col" : "flex-row"
-        }  border border-[#ddd] rounded-xl`}
+        className={`flex ${isLayoutGrid ? "flex-col" : "flex-row"} rounded-xl`}
       >
         <figure className="rounded-t-xl">
           <img
-            className={`max-h-[277px] rounded-xl w-full object-cover`}
+            className={`max-h-[273px] lg:min-h-[273px] rounded-xl w-full object-cover`}
             src={image}
             alt="car image"
           />
         </figure>
-        <div className="px-4 py-2 space-y-1">
+        <div className="px-4 pt-2 pb-3 space-y-1">
           <h2 className="card-title">
             <FaCar size={30} />{" "}
             <span className="text-2xl font-semibold">{model}</span>

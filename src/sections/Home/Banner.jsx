@@ -1,17 +1,23 @@
 import { Canvas } from "@react-three/fiber";
-import { memo } from "react";
+import { memo, useState } from "react";
 import { Link } from "react-router";
 import Banner3DModel from "./Banner3DModel";
 import LoaderOverlay from "./LoaderOverlay ";
 
 const Banner = () => {
+  const [onOver, setOnOver] = useState(false);
+  console.log(onOver);
   return (
     <div className="flex  flex-col md:flex-col-reverse h-[calc(100vh-71px)]    px-2 xl:px-0 ">
       {/* image content  */}
       <div className="flex-1 flex items-end pt-3 relative">
         <LoaderOverlay />
-        <Canvas camera={{ position: [5, 3, 5], fov: 35 }}>
-          <Banner3DModel />
+        <Canvas
+          onMouseOver={() => setOnOver(true)}
+          onMouseOut={() => setOnOver(false)}
+          camera={{ position: [5, 3, 5], fov: 35 }}
+        >
+          <Banner3DModel onOver={onOver} />
         </Canvas>
       </div>
       {/* text content  */}
