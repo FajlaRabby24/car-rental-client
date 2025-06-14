@@ -7,20 +7,27 @@ const SpacialOffers = () => {
   return (
     <div className="pb-52 px-2 xl:px-0">
       <h1 className="font-semibold text-4xl mb-8">Spacial Offers</h1>
-      <div className="space-y-20">
+      <div className=" grid grid-cols-1 lg:grid-cols-2  gap-4">
         {/* box 1  */}
         <Reveal>
-          <div className="flex flex-col md:flex-row gap-8">
-            <figure className="flex-1">
-              <img src={offers1} alt="offer 1 image" className="rounded-lg" />
+          <div className="flex flex-1 flex-col  gap-8 bg-[#f8f8f8] rounded-lg">
+            <figure>
+              <img
+                src={offers1}
+                alt="offer 1 image"
+                className="rounded-lg max-h-[410px] object-cover w-full"
+              />
             </figure>
-            <div className=" flex-1 space-y-2">
+            <div className=" space-y-2 px-4 pb-4">
               <h2 className="text-3xl md:text-4xl md:leading-12 font-semibold">
-                Luxury cars at $99/day this holiday season!
+                Luxury cars at $99/day season!
               </h2>
               <p className="font-medium">
-                This holiday season, treat yourself to the elegance of luxury
-                cars at just $99 per day. Enjoy unmatched comfort.
+                Drive luxury for just $99 a day this holiday season. Choose from
+                top-tier cars and make every trip unforgettable. Perfect for
+                holidays, events, or simply treating yourself. Style, comfort,
+                and performance—now within reach. Book now and elevate your
+                holiday driving experience.
               </p>
               <div className="card-actions pt-3 ">
                 <Link to={"/available-cars"}>
@@ -32,21 +39,26 @@ const SpacialOffers = () => {
         </Reveal>
         {/* box 2  */}
         <Reveal>
-          <div className="flex flex-col md:flex-row-reverse gap-8">
-            <figure className="flex-1">
-              <img src={offers2} alt="offer 1 image" className="rounded-lg" />
+          <div className="flex flex-1 flex-col  gap-8 bg-[#f8f8f8] rounded-lg">
+            <figure>
+              <img
+                src={offers2}
+                alt="offer 1 image"
+                className="rounded-lg max-h-[410px] object-cover w-full"
+              />
             </figure>
-            <div className=" flex-1 space-y-2">
+            <div className="space-y-2 px-4 pb-4">
               <h2 className="text-3xl md:text-4xl md:leading-12 font-semibold">
                 Get 15% off for weekend rentals!
               </h2>
               <p className="font-medium">
-                Enjoy 15% off on all weekend luxury car rentals this holiday
-                season! Cruise in style and save big on your perfect getaway
-                ride. Don’t miss this limited-time offer to experience premium
-                cars at unbeatable prices. Book your weekend now!
+                Enjoy 15% off all weekend luxury rentals and travel in style.
+                Ideal for getaways, celebrations, or just a special ride. Our
+                premium vehicles bring elegance and excitement to your weekend
+                plans. Reserve now to save and drive something extraordinary
+                without breaking the bank.
               </p>
-              <div className="card-actions pt-3">
+              <div className="card-actions pt-3 ">
                 <Link to={"/available-cars"}>
                   <button className="btn btn-warning">Book Now</button>
                 </Link>

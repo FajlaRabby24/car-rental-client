@@ -48,7 +48,7 @@ const Feedbacks = () => {
               spaceBetween={30}
               slidesPerView={isMobile ? 2 : isLaptop ? 3 : 4}
               autoplay={{
-                delay: 2000,
+                delay: 1500,
                 disableOnInteraction: false,
               }}
               loop={true}
