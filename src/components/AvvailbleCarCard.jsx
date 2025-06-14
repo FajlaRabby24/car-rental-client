@@ -9,7 +9,7 @@ const AvvailbleCarCard = ({ car, isLayoutGrid }) => {
 
   return (
     <Reveal
-      className={`hover:-translate-y-4  gap-6 bg-[#f8f8f8] transition-all`}
+      className={`hover:-translate-y-4 shadow-sm gap-6 bg-[#f8f8f8] transition-all`}
     >
       <div
         className={`flex ${isLayoutGrid ? "flex-col" : "flex-row"} rounded-xl`}
@@ -29,7 +29,7 @@ const AvvailbleCarCard = ({ car, isLayoutGrid }) => {
           <p className="flex items-center gap-1">
             <MdOutlineAttachMoney size={25} />{" "}
             <span className="text-[#6a6a6a] font-semibold">
-              Rental price: {rentalPrice}/day
+              Rental price: ${rentalPrice}/day
             </span>
           </p>
           <p className="flex items-center gap-1">
