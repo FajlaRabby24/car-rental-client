@@ -5,23 +5,24 @@ import Banner3DModel from "./Banner3DModel";
 import LoaderOverlay from "./LoaderOverlay ";
 
 const Banner = () => {
-  const [onOver, setOnOver] = useState(false);
-  console.log(onOver);
+  const [color, setColor] = useState("");
+
+  const handleChange = (value) => {
+    setColor((prev) => (prev === value ? prev : value));
+  };
+
   return (
-    <div className="flex  flex-col md:flex-col-reverse h-[calc(100vh-71px)]    px-2 xl:px-0 ">
+    <div className="flex   flex-col md:flex-col-reverse h-[calc(100vh-71px)]    px-2 xl:px-0 ">
       {/* image content  */}
       <div className="flex-1 flex items-end pt-3 relative">
         <LoaderOverlay />
-        <Canvas
-          onMouseOver={() => setOnOver(true)}
-          onMouseOut={() => setOnOver(false)}
-          camera={{ position: [5, 3, 5], fov: 35 }}
-        >
-          <Banner3DModel onOver={onOver} />
+        <Canvas shadows={false} camera={{ position: [5, 3, 5], fov: 35 }}>
+          <Banner3DModel color={color} />
         </Canvas>
       </div>
+
       {/* text content  */}
-      <div className="space-y-2 md:text-center md:pt-9 md:space-y-3 ">
+      <div className="space-y-2 relative  md:text-center md:pt-9 md:space-y-3 ">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold md:font-semibold leading-12 md:leading-18">
           Drive Your Dreams Today!
         </h1>
@@ -39,6 +40,40 @@ const Banner = () => {
         <Link to={"/available-cars"}>
           <button className="btn btn-lg btn-warning">View Avalable Cars</button>
         </Link>
+        {/* pagination  */}
+        <div className="flex gap-2 pb-1 absolute -top-7 md:top-auto     mx-auto">
+          <input
+            onChange={() => handleChange(`#fff`)}
+            type="radio"
+            name="radio-4"
+            defaultChecked
+            className="radio   radio-seconday"
+          />
+          <input
+            onChange={() => handleChange(`#6FE6FC`)}
+            type="radio"
+            name="radio-4"
+            className="radio   radio-info"
+          />
+          <input
+            onChange={() => handleChange(`#e5a600`)}
+            type="radio"
+            name="radio-4"
+            className="radio   radio-warning"
+          />
+          <input
+            onChange={() => handleChange(`#fe1c55`)}
+            type="radio"
+            name="radio-4"
+            className="radio   radio-error"
+          />
+          <input
+            onChange={() => handleChange(`#00d18e`)}
+            type="radio"
+            name="radio-4"
+            className="radio   radio-success"
+          />
+        </div>
       </div>
     </div>
   );

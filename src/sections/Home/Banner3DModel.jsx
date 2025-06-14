@@ -2,10 +2,21 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { Suspense, useEffect, useRef, useState } from "react";
 
-const Banner3DModel = ({ onOver }) => {
+const Banner3DModel = ({ color }) => {
   const [isMobile, setisMobile] = useState(window.innerWidth < 768);
   const { scene } = useGLTF("/model/car.glb", true);
   const modelRef = useRef(null);
+
+  // change the car color
+  useEffect(() => {
+    scene.traverse((child) => {
+      if (child.isMesh) {
+        child.material.color.set(color || "#fff");
+        child.castShadow = false;
+        child.receiveShadow = false;
+      }
+    });
+  }, [scene, color]);
 
   // calculate screen size
   useEffect(() => {
@@ -18,8 +29,9 @@ const Banner3DModel = ({ onOver }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // auto rotate car
   useFrame(() => {
-    if (!onOver) {
+    if (modelRef.current) {
       modelRef.current.rotation.y += -0.003;
     }
   });
