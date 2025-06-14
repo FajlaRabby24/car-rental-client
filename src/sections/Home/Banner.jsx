@@ -1,4 +1,5 @@
 import { Canvas } from "@react-three/fiber";
+import { motion } from "motion/react";
 import { memo, useState } from "react";
 import { Link } from "react-router";
 import Banner3DModel from "./Banner3DModel";
@@ -22,7 +23,11 @@ const Banner = () => {
       </div>
 
       {/* text content  */}
-      <div className="space-y-2 relative  md:text-center md:pt-9 md:space-y-3 ">
+      <motion.div
+        initial={{ scale: 0, opacity: 0.6 }}
+        animate={{ scale: 1, opacity: 1 }}
+        className="space-y-2 relative  md:text-center md:pt-9 md:space-y-3 "
+      >
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold md:font-semibold leading-12 md:leading-18">
           Drive Your Dreams Today!
         </h1>
@@ -74,7 +79,7 @@ const Banner = () => {
             className="radio   radio-success"
           />
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
