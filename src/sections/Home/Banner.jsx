@@ -52,17 +52,23 @@ const Banner = () => {
             type="radio"
             name="radio-4"
             defaultChecked
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="secondary"
             className="radio   radio-seconday"
           />
           <input
             onChange={() => handleChange(`#6FE6FC`)}
             type="radio"
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="info"
             name="radio-4"
             className="radio   radio-info"
           />
           <input
             onChange={() => handleChange(`#e5a600`)}
             type="radio"
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="warning"
             name="radio-4"
             className="radio   radio-warning"
           />
@@ -70,11 +76,15 @@ const Banner = () => {
             onChange={() => handleChange(`#fe1c55`)}
             type="radio"
             name="radio-4"
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="error"
             className="radio   radio-error"
           />
           <input
             onChange={() => handleChange(`#00d18e`)}
             type="radio"
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="success"
             name="radio-4"
             className="radio   radio-success"
           />
