@@ -53,7 +53,7 @@ const Banner = () => {
             name="radio-4"
             defaultChecked
             data-tooltip-id="my-tooltip"
-            data-tooltip-content="secondary"
+            data-tooltip-content="primary"
             className="radio   radio-seconday"
           />
           <input
@@ -68,7 +68,7 @@ const Banner = () => {
             onChange={() => handleChange(`#e5a600`)}
             type="radio"
             data-tooltip-id="my-tooltip"
-            data-tooltip-content="warning"
+            data-tooltip-content="yellow"
             name="radio-4"
             className="radio   radio-warning"
           />
@@ -77,14 +77,14 @@ const Banner = () => {
             type="radio"
             name="radio-4"
             data-tooltip-id="my-tooltip"
-            data-tooltip-content="error"
+            data-tooltip-content="red"
             className="radio   radio-error"
           />
           <input
             onChange={() => handleChange(`#00d18e`)}
             type="radio"
             data-tooltip-id="my-tooltip"
-            data-tooltip-content="success"
+            data-tooltip-content="green"
             name="radio-4"
             className="radio   radio-success"
           />
