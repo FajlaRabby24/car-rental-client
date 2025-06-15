@@ -58,7 +58,7 @@ const Feedbacks = () => {
             >
               {feedbacks.map((feedback) => (
                 <SwiperSlide key={feedback.id} className="w-full">
-                  <div className="bg-[#f8f8f8]  w-full  rounded-xl px-5 py-3">
+                  <div className="bg-base-300  w-full  rounded-xl px-5 py-3">
                     <img
                       src={feedback.image}
                       alt="user image"

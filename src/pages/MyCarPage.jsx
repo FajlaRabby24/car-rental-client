@@ -60,6 +60,8 @@ const MyCarPage = () => {
         <select
           name="sort"
           onChange={handleSort}
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content="Sory by price"
           defaultValue="Sort by price"
           className="select w-fit"
         >
@@ -75,7 +77,7 @@ const MyCarPage = () => {
           <table className="table">
             {/* head */}
             <thead>
-              <tr className="bg-[#e7e7e7] rounded ">
+              <tr className="bg-base-300 rounded ">
                 <th>Image</th>
                 <th>Modal</th>
                 <th>Price/day</th>

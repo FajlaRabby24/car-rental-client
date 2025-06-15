@@ -38,14 +38,14 @@ const CarDetailsPage = () => {
   const isOwnCar = user.email === owner;
 
   return (
-    <div className="px-3 pb-40  pt-10 ">
+    <div className="px-3 mb-40 mt-10 ">
       <button
         onClick={() => navigate(-1)}
         className="btn btn-warning mb-4 gap-0 flex justify-start"
       >
         <MdKeyboardArrowLeft size={15} /> Back
       </button>
-      <div className=" border border-[#cccccca0] rounded-lg  flex flex-col md:flex-row md:gap-2 8">
+      <div className="   bg-base-200  rounded-lg  flex flex-col md:flex-row md:gap-2 8">
         <figure className="lg:w-1/3 ">
           <img
             src={image}

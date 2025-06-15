@@ -1,5 +1,4 @@
 import { Outlet, useLocation, useNavigation } from "react-router";
-import { Tooltip } from "react-tooltip";
 import Loading from "../components/Loading";
 import Footer from "../shared/Footer";
 import Navbar from "../shared/Navbar";
@@ -15,7 +14,6 @@ const MainLayout = () => {
 
   return (
     <div>
-      <Tooltip id="my-tooltip" />
       <header className="sticky top-0 backdrop-blur-xl z-50">
         <Navbar />
       </header>

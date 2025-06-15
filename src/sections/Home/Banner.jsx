@@ -14,7 +14,7 @@ const Banner = () => {
 
   return (
     <div className="flex   flex-col md:flex-col-reverse h-[calc(100vh-71px)]    px-2 xl:px-0 ">
-      {/* image content  */}
+      {/* image   */}
       <div className="flex-1 flex items-end pt-3 relative">
         <LoaderOverlay />
         <Canvas shadows={false} camera={{ position: [5, 3, 5], fov: 35 }}>
@@ -34,7 +34,7 @@ const Banner = () => {
         <h4 className="text-xl md:text-2xl font-medium ">
           From city cruisers to luxury rides – discover the perfect match
         </h4>
-        <p className="text-[#666666] font-normal">
+        <p className="text-shadow-base-300 font-normal">
           Our exclusive lineup of premium cars is tailored for those who demand
           more than just a ride. Whether you're looking for luxury, performance,
           or sophistication, each vehicle in our collection is engineered to
@@ -45,7 +45,7 @@ const Banner = () => {
         <Link to={"/available-cars"}>
           <button className="btn btn-lg btn-warning">View Avalable Cars</button>
         </Link>
-        {/* pagination  */}
+        {/*color pagination  */}
         <div className="flex gap-2 pb-1 absolute -top-7 md:top-auto     mx-auto">
           <input
             onChange={() => handleChange(`#fff`)}

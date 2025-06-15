@@ -68,6 +68,8 @@ const MyBookingPage = () => {
           onChange={handleSort}
           defaultValue="Sort by price"
           className="select w-fit"
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content="Sort by price"
         >
           <option disabled={true}>Sort by price</option>
           <option value={"low"}>Lowest first</option>
@@ -81,7 +83,7 @@ const MyBookingPage = () => {
           <table className="table">
             {/* head */}
             <thead>
-              <tr className="bg-[#e7e7e7] rounded ">
+              <tr className="bg-base-300 rounded ">
                 <th>Image</th>
                 <th>Modal</th>
                 <th>Booking Date</th>

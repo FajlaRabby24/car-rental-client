@@ -76,7 +76,7 @@ const AvailableCarsPage = () => {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search something.."
+            placeholder="Search car.."
           />
         </label>
 
@@ -84,6 +84,8 @@ const AvailableCarsPage = () => {
         <div className="flex items-center gap-3">
           <select
             name="sort"
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="Sory by price"
             onChange={handleSort}
             defaultValue="Sort by price"
             className="select"
@@ -96,6 +98,10 @@ const AvailableCarsPage = () => {
           <button
             onClick={() => setIsLayoutGrid((prev) => !prev)}
             className="btn hidden md:block"
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content={` Toggle to ${
+              isLayoutGrid ? "List" : "Grid"
+            }`}
           >
             Toggle to {isLayoutGrid ? "List" : "Grid"}
           </button>

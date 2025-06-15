@@ -9,7 +9,7 @@ const AvvailbleCarCard = ({ car, isLayoutGrid }) => {
 
   return (
     <Reveal
-      className={`hover:-translate-y-4 shadow-sm gap-6 bg-[#f8f8f8] transition-all`}
+      className={`hover:-translate-y-4 shadow-sm gap-6 bg-base-300 transition-all`}
     >
       <div
         className={`flex ${isLayoutGrid ? "flex-col" : "flex-row"} rounded-xl`}
