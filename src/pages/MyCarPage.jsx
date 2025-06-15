@@ -5,6 +5,8 @@ import Loading from "../components/Loading";
 import MyCarsTr from "../components/MyCarsTr";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import useScrollToTop from "../hooks/useScrollToTop";
+import useTitle from "../hooks/useTitle";
 import NoCars from "../sections/My cars/NoCars";
 
 const MyCarPage = () => {
@@ -12,6 +14,8 @@ const MyCarPage = () => {
   const [loading, setLoading] = useState(true);
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  useScrollToTop();
+  useTitle("My car");
 
   useEffect(() => {
     axiosSecure

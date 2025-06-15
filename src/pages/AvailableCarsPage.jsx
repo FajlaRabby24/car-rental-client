@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router";
 import AvvailbleCarCard from "../components/AvvailbleCarCard";
+import useScrollToTop from "../hooks/useScrollToTop";
+import useTitle from "../hooks/useTitle";
 import NoCars from "../sections/My cars/NoCars";
 
 const AvailableCarsPage = () => {
   const initialAvailableCars = useLoaderData();
   const [availableCars, setAvailableCars] = useState(initialAvailableCars);
   const [isLayoutGrid, setIsLayoutGrid] = useState(true);
-
+  useScrollToTop();
+  useTitle("Available car");
   const [query, setQuery] = useState("");
 
   useEffect(() => {

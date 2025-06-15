@@ -5,6 +5,8 @@ import Loading from "../components/Loading";
 import MyBookingCarsTr from "../components/MyBookingCarsTr";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import useScrollToTop from "../hooks/useScrollToTop";
+import useTitle from "../hooks/useTitle";
 import NoCars from "../sections/My cars/NoCars";
 
 const MyBookingPage = () => {
@@ -12,6 +14,8 @@ const MyBookingPage = () => {
   const [loading, setLoading] = useState(true);
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  useScrollToTop();
+  useTitle("My booking");
 
   useEffect(() => {
     axiosSecure

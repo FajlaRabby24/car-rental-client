@@ -1,7 +1,9 @@
 import { Link } from "react-router";
 import notFoundImage from "../assets/images/notFoundImage.jpg";
+import useTitle from "../hooks/useTitle";
 
 const NotFoundPage = () => {
+  useTitle("Error");
   return (
     <div
       className="hero min-h-screen"

@@ -2,11 +2,15 @@ import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import useDate from "../hooks/useDate";
+import useScrollToTop from "../hooks/useScrollToTop";
+import useTitle from "../hooks/useTitle";
 
 const AddCars = () => {
   const axiosSecure = useAxiosSecure();
   const currentDate = useDate();
   const { user } = useAuth();
+  useScrollToTop();
+  useTitle("Add car");
 
   const handleAddCar = (e) => {
     e.preventDefault();
