@@ -1,28 +1,25 @@
-import { memo, useEffect, useState } from "react";
-import { Link } from "react-router";
+import { useQuery } from "@tanstack/react-query";
+import { memo } from "react";
 import Loading from "../../components/Loading";
 import RecentCarCard from "../../components/RecentCarCard";
-import NoCars from "../My cars/NoCars";
 
 const RecentListing = () => {
-  const [recentCars, setRecentCars] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { data: recentCars, isLoading } = useQuery({
+    queryKey: ["recent"],
+    queryFn: () =>
+      fetch(`${import.meta.env.VITE_root_api_url}/recent-list`).then((res) =>
+        res.json()
+      ),
+  });
 
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_root_api_url}/recent-list`)
-      .then((res) => res.json())
-      .then((data) => {
-        setRecentCars(data);
-        setLoading(false);
-      });
-  }, []);
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className="px-2  ">
       <h1 className="font-semibold text-4xl mb-8">Recent List</h1>
-      {loading ? (
-        <Loading />
-      ) : recentCars.length ? (
+      {recentCars.length ? (
         <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4`}>
           {recentCars.map((car) => (
             <RecentCarCard car={car} key={car._id} />

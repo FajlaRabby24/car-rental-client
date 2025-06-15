@@ -1,10 +1,10 @@
-import { OrbitControls, useGLTF } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { Suspense, useEffect, useRef, useState } from "react";
 
-const Banner3DModel = ({ color }) => {
+const Banner3DModel = ({ color, scene }) => {
   const [isMobile, setisMobile] = useState(window.innerWidth < 768);
-  const { scene } = useGLTF("/model/car.glb", true);
+  // const { scene } = useGLTF("/model/car.glb", true);
   const modelRef = useRef(null);
 
   // change the car color

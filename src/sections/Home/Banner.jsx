@@ -5,7 +5,7 @@ import { Link } from "react-router";
 import Banner3DModel from "./Banner3DModel";
 import LoaderOverlay from "./LoaderOverlay ";
 
-const Banner = () => {
+const Banner = ({ scene }) => {
   const [color, setColor] = useState("");
 
   const handleChange = (value) => {
@@ -18,7 +18,7 @@ const Banner = () => {
       <div className="flex-1 flex items-end pt-3 relative">
         <LoaderOverlay />
         <Canvas shadows={false} camera={{ position: [5, 3, 5], fov: 35 }}>
-          <Banner3DModel color={color} />
+          <Banner3DModel color={color} scene={scene} />
         </Canvas>
       </div>
 

@@ -8,22 +8,15 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
+import { useQuery } from "@tanstack/react-query";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import Loading from "../../components/Loading";
 
 const Feedbacks = () => {
   const [isMobile, setisMobile] = useState(window.innerWidth < 768);
   const [isLaptop, setisLaptop] = useState(
     window.innerWidth > 767 && window.innerWidth < 1024
   );
-  const [feedbacks, setFeedbacks] = useState([]);
-
-  useEffect(() => {
-    fetch("/feedbacks.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setFeedbacks(data);
-      });
-  }, []);
 
   // calculate screen size
   useEffect(() => {
@@ -33,9 +26,20 @@ const Feedbacks = () => {
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize(); // call once initially
+    handleResize();
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // fetching data
+  const { data: feedbacks, isLoading } = useQuery({
+    queryKey: ["feedbacks"],
+    queryFn: () => fetch("/feedbacks.json").then((res) => res.json()),
+    staleTime: Infinity,
+  });
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className="px-2">
