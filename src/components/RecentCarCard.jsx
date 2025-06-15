@@ -11,7 +11,7 @@ const RecentCarCard = ({ car }) => {
 
   return (
     <Reveal
-      className={`hover:-translate-y-4 shadow-sm gap-6 bg-base-300 transition-all`}
+      className={`hover:-translate-y-4 shadow-sm gap-6 bg-base-200 transition-all`}
     >
       <div className={`flex flex-col  rounded-xl `}>
         <figure className="rounded-t-xl">

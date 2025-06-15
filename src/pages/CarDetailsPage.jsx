@@ -4,11 +4,14 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useLoaderData, useNavigate } from "react-router";
 import BookingDiolog from "../components/BookingDiolog";
 import useAuth from "../hooks/useAuth";
+import useScrollToTop from "../hooks/useScrollToTop";
+import useTitle from "../hooks/useTitle";
 
 const CarDetailsPage = () => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  useScrollToTop();
+  useTitle("Car details");
   const car = useLoaderData();
   const [carDetails, setCarDetails] = useState(car);
 
@@ -60,7 +63,7 @@ const CarDetailsPage = () => {
               data-tooltip-id="my-tooltip"
               data-tooltip-content={`${
                 bookingCount === 0 ? "No" : bookingCount
-              } people booking in this car`}
+              } people booking  this car`}
               className="flex items-center gap-1"
             >
               <FaCar size={20} />
@@ -96,7 +99,7 @@ const CarDetailsPage = () => {
           <div className="flex items-center mt-4 gap-2">
             <button
               data-tooltip-id="my-tooltip"
-              data-tooltip-content="Like this recipe"
+              data-tooltip-content="Book car"
               disabled={isOwnCar}
               onClick={() => setIsModalOpen(true)}
               className="btn btn-error btn-outline"

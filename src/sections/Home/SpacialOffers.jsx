@@ -10,7 +10,7 @@ const SpacialOffers = () => {
       <div className=" grid grid-cols-1 lg:grid-cols-2  gap-4">
         {/* box 1  */}
         <Reveal
-          className={`hover:-translate-y-4 shadow-sm  bg-base-300 rounded-lg transition-all`}
+          className={`hover:-translate-y-4 shadow-sm  bg-base-200 rounded-lg transition-all`}
         >
           <div className="flex  flex-col gap-2 rounded-lg">
             <figure>
@@ -41,7 +41,7 @@ const SpacialOffers = () => {
         </Reveal>
         {/* box 2  */}
         <Reveal
-          className={`hover:-translate-y-4 shadow-sm  rounded-lg bg-base-300 transition-all`}
+          className={`hover:-translate-y-4 shadow-sm  rounded-lg bg-base-200 transition-all`}
         >
           <div className="flex  flex-col gap-2 rounded-lg">
             <figure>

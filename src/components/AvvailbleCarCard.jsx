@@ -9,7 +9,7 @@ const AvvailbleCarCard = ({ car, isLayoutGrid }) => {
 
   return (
     <Reveal
-      className={`hover:-translate-y-4 shadow-sm gap-6 bg-base-300 transition-all`}
+      className={`hover:-translate-y-4 shadow-sm gap-6 bg-base-200 transition-all`}
     >
       <div
         className={`flex ${isLayoutGrid ? "flex-col" : "flex-row"} rounded-xl`}
@@ -52,7 +52,7 @@ const AvvailbleCarCard = ({ car, isLayoutGrid }) => {
             className={`card-actions ${isLayoutGrid ? "justify-end " : "mt-3"}`}
           >
             <Link to={`/car/${_id}`}>
-              <button className="btn btn-primary">Book Now</button>
+              <button className="btn btn-warning">Book Now</button>
             </Link>
           </div>
         </div>
