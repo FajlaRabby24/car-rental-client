@@ -80,6 +80,7 @@ const MyCarsTr = ({ car, handleUpdateUi, handleUpdateUiAfterCarDeleted }) => {
           data-tooltip-content="Update car"
         >
           <FaEdit size={20} className="white" />
+          Update
         </button>
         <button
           data-tooltip-id="my-tooltip"
@@ -88,6 +89,7 @@ const MyCarsTr = ({ car, handleUpdateUi, handleUpdateUiAfterCarDeleted }) => {
           onClick={() => handleDeleteCar(_id)}
         >
           <MdDelete size={20} />
+          Delete
         </button>
       </td>
       {isModalOpen && (

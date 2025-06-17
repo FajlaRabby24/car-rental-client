@@ -68,19 +68,21 @@ const MyBookingCarsTr = ({
           className="btn p-2 btn-info"
           disabled={status !== "confirmed"}
           data-tooltip-id="my-tooltip"
-          data-tooltip-content="Update booking"
+          data-tooltip-content="Modify booking"
           onClick={() => setIsModalOpen(true)}
         >
           <SlCalender color="white" size={20} />
+          Modify
         </button>
         <button
           className="btn p-2 btn-error"
           disabled={status !== "confirmed"}
           data-tooltip-id="my-tooltip"
-          data-tooltip-content="Delete booking"
+          data-tooltip-content="Cancel booking"
           onClick={() => setIsDeleteModalOpen(true)}
         >
-          <MdDelete size={20} color="" />
+          <MdDelete size={20} />
+          Cancel
         </button>
       </td>
       {isDeleteModalOpen && (
