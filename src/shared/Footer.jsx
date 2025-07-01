@@ -1,7 +1,6 @@
 import { BsTwitterX } from "react-icons/bs";
-import { FaFacebookF } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa6";
-import { IoLogoYoutube } from "react-icons/io";
 import logo from "../assets/images/logo.png";
 
 const Footer = () => {
@@ -12,40 +11,41 @@ const Footer = () => {
           <img src={logo} alt="logo" className="w-1/7" />
           <p className="font-bold text-xl">Car Rental</p>
           <p className="flex flex-col md:flex-row gap-3 font-semibold">
-            <span>Phone: +001258795</span>
-            <span>Email: car-rental@gmail.com</span>
+            <span>Email: fajlarabby.dev@gmail.com</span>
           </p>
         </aside>
         <nav>
           <div className="grid grid-flow-col gap-4 ">
-            <button>
-              <FaFacebookF
-                className="p- bg-black cursor-pointer p-2 rounded-full "
-                color="#fff"
-                size={40}
-              />
-            </button>
-            <button>
-              <FaLinkedinIn
-                className="p- bg-black cursor-pointer p-2 rounded-full "
-                color="#fff"
-                size={40}
-              />
-            </button>
-            <button>
-              <BsTwitterX
-                className="p- bg-black cursor-pointer p-2 rounded-full "
-                color="#fff"
-                size={40}
-              />
-            </button>
-            <button>
-              <IoLogoYoutube
-                className="p- bg-black cursor-pointer p-2 rounded-full "
-                color="#fff"
-                size={40}
-              />
-            </button>
+            <a target="_blank" href="https://github.com/FajlaRabby24">
+              <button>
+                <FaGithub
+                  className="p- bg-black cursor-pointer p-2 rounded-full "
+                  color="#fff"
+                  size={40}
+                />
+              </button>
+            </a>
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/in/fajla-rabby-99297b361"
+            >
+              <button>
+                <FaLinkedinIn
+                  className="p- bg-black cursor-pointer p-2 rounded-full "
+                  color="#fff"
+                  size={40}
+                />
+              </button>
+            </a>
+            <a target="_blank" href="https://x.com/FajlaRabby24">
+              <button>
+                <BsTwitterX
+                  className="p- bg-black cursor-pointer p-2 rounded-full "
+                  color="#fff"
+                  size={40}
+                />
+              </button>
+            </a>
           </div>
         </nav>
       </div>
