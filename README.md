@@ -83,14 +83,28 @@ This project is part of an assignment to evaluate the ability to create a full-f
 
 ---
 
-## 📁 Folder Structure (Client Side)
+## 🛠️ Run Locally
 
-├── assets/ # Images & static files
-├── components/ # Reusable UI components
-├── context/ # AuthProvider and context APIs
-├── hooks/ # Custom hooks (e.g. useAuth, useAxios)
-├── layouts/ # Main layout components
-├── pages/ # Page components (Home, AddCar, MyCars, etc.)
-├── routes/ # PrivateRoute, Router setup
-├── styles/ # Tailwind config and global styles
-└── main.jsx # App entry point
+1. Clone the project
+
+```bash
+git clone https://github.com/FajlaRabby24/car-rental-client.git
+```
+
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env` file and add the following Firebase keys:
+
+```env
+VITE_apiKey=your_api_key
+VITE_authDomain=your_auth_domain
+VITE_projectId=your_project_id
+VITE_storageBucket=your_storage_bucket
+VITE_messagingSenderId=your_sender_id
+VITE_appId=your_app_id
+VITE_root_api_url=server-site-link
+```
+
