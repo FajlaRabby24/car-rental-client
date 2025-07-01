@@ -1,13 +1,12 @@
 import { formatDistanceToNow } from "date-fns";
-import { FaCar, FaCarSide, FaCheckSquare } from "react-icons/fa";
-import { ImCross } from "react-icons/im";
+import { FaCar, FaCarSide } from "react-icons/fa";
 import { IoTime } from "react-icons/io5";
 import { MdOutlineAttachMoney } from "react-icons/md";
+import { Link } from "react-router";
 import Reveal from "../animation/Reveal";
 
 const RecentCarCard = ({ car }) => {
-  const { _id, model, bookingCount, date, rentalPrice, image, availability } =
-    car;
+  const { _id, model, bookingCount, date, rentalPrice, image } = car;
 
   return (
     <Reveal
@@ -38,27 +37,18 @@ const RecentCarCard = ({ car }) => {
               Posted: {formatDistanceToNow(new Date(date), { addSuffix: true })}
             </span>
           </p>
-          <p className="flex items-center gap-1">
-            {availability === "available" ? (
-              <>
-                <FaCheckSquare size={20} color="#00d26a" />{" "}
-                <span className="text-[#6a6a6a] font-semibold">Available</span>
-              </>
-            ) : (
-              <>
-                <ImCross size={20} color="red" />{" "}
-                <span className="text-[#6a6a6a] font-semibold">
-                  Not available
-                </span>
-              </>
-            )}
-          </p>
+
           <p className="flex items-center gap-1">
             <FaCarSide size={25} />{" "}
             <span className="text-[#6a6a6a] font-semibold">
               Booking: {bookingCount}
             </span>
           </p>
+          <div className={`card-actions justify-end  `}>
+            <Link to={`/car/${_id}`}>
+              <button className="btn bn-sm btn-warning">Book Now</button>
+            </Link>
+          </div>
         </div>
       </div>
     </Reveal>

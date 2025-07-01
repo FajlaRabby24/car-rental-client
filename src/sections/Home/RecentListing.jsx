@@ -20,7 +20,9 @@ const RecentListing = () => {
     <div className="px-2  ">
       <h1 className="font-semibold text-4xl mb-8">Recent List</h1>
       {recentCars.length ? (
-        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4`}>
+        <div
+          className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4`}
+        >
           {recentCars.map((car) => (
             <RecentCarCard car={car} key={car._id} />
           ))}

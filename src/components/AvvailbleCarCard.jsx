@@ -4,16 +4,14 @@ import { MdOutlineAttachMoney } from "react-icons/md";
 import { Link } from "react-router";
 import Reveal from "../animation/Reveal";
 
-const AvvailbleCarCard = ({ car, isLayoutGrid }) => {
-  const { _id, model, bookingCount, location, rentalPrice, image, owner } = car;
+const AvvailbleCarCard = ({ car }) => {
+  const { _id, model, bookingCount, location, rentalPrice, image } = car;
 
   return (
     <Reveal
       className={`hover:-translate-y-4 shadow-sm gap-6 bg-base-200 transition-all`}
     >
-      <div
-        className={`flex ${isLayoutGrid ? "flex-col" : "flex-row"} rounded-xl`}
-      >
+      <div className={`flex flex-col rounded-xl`}>
         <figure className="rounded-t-xl">
           <img
             className={`max-h-[273px] lg:min-h-[273px] rounded-xl w-full object-cover`}
@@ -48,9 +46,7 @@ const AvvailbleCarCard = ({ car, isLayoutGrid }) => {
               Booking: {bookingCount}
             </span>
           </p>
-          <div
-            className={`card-actions ${isLayoutGrid ? "justify-end " : "mt-3"}`}
-          >
+          <div className={`card-actions justify-end`}>
             <Link to={`/car/${_id}`}>
               <button className="btn btn-warning">Book Now</button>
             </Link>

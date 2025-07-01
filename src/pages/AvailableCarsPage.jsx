@@ -8,7 +8,6 @@ import NoCars from "../sections/My cars/NoCars";
 const AvailableCarsPage = () => {
   const initialAvailableCars = useLoaderData();
   const [availableCars, setAvailableCars] = useState(initialAvailableCars);
-  const [isLayoutGrid, setIsLayoutGrid] = useState(true);
   useScrollToTop();
   useTitle("Available car");
   const [query, setQuery] = useState("");
@@ -29,7 +28,7 @@ const AvailableCarsPage = () => {
             setAvailableCars([]);
           }
         })
-        .catch((err) => {
+        .catch(() => {
           setAvailableCars([]);
         });
     }, 500);
@@ -57,7 +56,7 @@ const AvailableCarsPage = () => {
 
   return (
     <div className="pt-5 md:pt-12 pb-40 px-2">
-      <div className="flex items-center justify-between gap-3 mb-3">
+      <div className="flex items-center justify-between gap-3 mb-6">
         <label className="input">
           <svg
             className="h-[1em] opacity-50"
@@ -97,31 +96,12 @@ const AvailableCarsPage = () => {
             <option value={"low"}>Lowest first</option>
             <option value={"high"}>Highest first</option>
           </select>
-          {/* toggle to view  */}
-          <button
-            onClick={() => setIsLayoutGrid((prev) => !prev)}
-            className="btn hidden md:block"
-            data-tooltip-id="my-tooltip"
-            data-tooltip-content={` Toggle to ${
-              isLayoutGrid ? "List" : "Grid"
-            }`}
-          >
-            Toggle to {isLayoutGrid ? "List" : "Grid"}
-          </button>
         </div>
       </div>
       {availableCars.length ? (
-        <div
-          className={`grid grid-cols-1 ${
-            isLayoutGrid && `md:grid-cols-2 lg:grid-cols-3`
-          } gap-4`}
-        >
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4`}>
           {availableCars.map((car) => (
-            <AvvailbleCarCard
-              isLayoutGrid={isLayoutGrid}
-              car={car}
-              key={car._id}
-            />
+            <AvvailbleCarCard car={car} key={car._id} />
           ))}
         </div>
       ) : (
