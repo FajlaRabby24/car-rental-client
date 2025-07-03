@@ -25,10 +25,7 @@ const Footer = () => {
                 />
               </button>
             </a>
-            <a
-              target="_blank"
-              href="https://www.linkedin.com/in/fajla-rabby-99297b361"
-            >
+            <a target="_blank" href="https://www.linkedin.com/in/fajla">
               <button>
                 <FaLinkedinIn
                   className="p- bg-black cursor-pointer p-2 rounded-full "
