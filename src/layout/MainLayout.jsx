@@ -17,7 +17,7 @@ const MainLayout = () => {
       <header className="sticky top-0 backdrop-blur-xl z-50 border-b border-[#e0e0e0]">
         <Navbar />
       </header>
-      <main className="max-w-7xl mx-auto min-h-[calc(100vh-386px)]">
+      <main className="max-w-5xl xl:max-w-6xl 2xl:mx-w-7xl mx-auto min-h-[calc(100vh-386px)]">
         {isLoading ? <Loading /> : <Outlet></Outlet>}
       </main>
       <footer>

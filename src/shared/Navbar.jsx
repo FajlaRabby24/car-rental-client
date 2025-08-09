@@ -24,6 +24,16 @@ const Navbar = () => {
           Available Cars
         </NavLink>
       </li>
+      <li>
+        <NavLink className={"font-semibold"} to={"/about-me"}>
+          About me
+        </NavLink>
+      </li>
+      <li>
+        <NavLink className={"font-semibold"} to={"/contact-me"}>
+          Contact me
+        </NavLink>
+      </li>
       {user && (
         <>
           <li>

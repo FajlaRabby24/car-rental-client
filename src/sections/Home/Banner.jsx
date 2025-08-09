@@ -13,7 +13,7 @@ const Banner = ({ scene }) => {
   };
 
   return (
-    <div className="flex   flex-col md:flex-col-reverse h-[calc(100vh-71px)]    px-2 xl:px-0 ">
+    <div className="flex    flex-col md:flex-col-reverse h-[calc(100vh-71px)]    px-2 xl:px-0 ">
       {/* image   */}
       <div className="flex-1 flex items-end pt-3 relative">
         <LoaderOverlay />
@@ -26,9 +26,9 @@ const Banner = ({ scene }) => {
       <motion.div
         initial={{ scale: 0, opacity: 0.6 }}
         animate={{ scale: 1, opacity: 1 }}
-        className="space-y-2 relative  md:text-center md:pt-9 md:space-y-3 "
+        className="space-y-2 relative  md:text-center md:pt-4 md:space-y-2"
       >
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold md:font-semibold leading-12 md:leading-18">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold md:font-semibold leading-12 md:leading-14">
           Drive Your Dreams Today!
         </h1>
         <h4 className="text-xl md:text-2xl font-medium ">

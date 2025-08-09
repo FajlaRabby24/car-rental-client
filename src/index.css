@@ -10,3 +10,15 @@ body {
 a.active {
   @apply border-b-3 border-orange-500;
 }
+
+.grid-box {
+  @apply p-3 rounded-lg  border border-primary bg-base-200;
+}
+
+.grid-box-title {
+  @apply text-xl font-semibold mb-2;
+}
+
+.radius {
+  @apply rounded-md;
+}

@@ -1,9 +1,11 @@
 import { createBrowserRouter } from "react-router";
 import Loading from "../components/Loading";
 import MainLayout from "../layout/MainLayout";
+import AboutMe from "../pages/AboutMe";
 import AddCars from "../pages/AddCars";
 import AvailableCarsPage from "../pages/AvailableCarsPage";
 import CarDetailsPage from "../pages/CarDetailsPage";
+import ContactMe from "../pages/ContactMe";
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import MyBookingPage from "../pages/MyBookingPage";
@@ -21,6 +23,14 @@ export const router = createBrowserRouter([
         index: true,
         Component: HomePage,
         hydrateFallbackElement: <Loading />,
+      },
+      {
+        path: "about-me",
+        Component: AboutMe,
+      },
+      {
+        path: "contact-me",
+        Component: ContactMe,
       },
       {
         path: "available-cars",
