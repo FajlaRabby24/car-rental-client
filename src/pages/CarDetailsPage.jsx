@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaCar } from "react-icons/fa";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useLoaderData, useNavigate } from "react-router";
@@ -10,11 +10,17 @@ import useTitle from "../hooks/useTitle";
 const CarDetailsPage = () => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { user } = useAuth();
   useScrollToTop();
   useTitle("Car details");
   const car = useLoaderData();
   const [carDetails, setCarDetails] = useState(car);
-
+  console.log(typeof car);
+  useEffect(() => {
+    if (typeof car !== "object") {
+      return navigate("/not-found", { replace: true });
+    }
+  }, [car, navigate]);
   const {
     _id,
     model,
@@ -37,7 +43,6 @@ const CarDetailsPage = () => {
     }
   };
 
-  const { user } = useAuth();
   const isOwnCar = user.email === owner;
 
   return (
@@ -91,7 +96,7 @@ const CarDetailsPage = () => {
           </p>
           <p className="font-semibold">Fetures:</p>
           <ul className="pl-4 list-disc">
-            {feturesToArr.map((feture, index) => (
+            {feturesToArr?.map((feture, index) => (
               <li key={index}>{feture}</li>
             ))}
           </ul>
