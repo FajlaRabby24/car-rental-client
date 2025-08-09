@@ -19,6 +19,6 @@ a.active {
   @apply text-xl font-semibold mb-2;
 }
 
-.radius {
-  @apply rounded-md;
+.section-title {
+  @apply font-semibold text-2xl md:text-3xl md:mb-6;
 }

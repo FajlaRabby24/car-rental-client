@@ -6,7 +6,7 @@ import offers2 from "../../assets/images/offers2.jpg";
 const SpacialOffers = () => {
   return (
     <div className="pb-52 px-2 xl:px-0">
-      <h1 className="font-semibold text-4xl mb-8">Spacial Offers</h1>
+      <h1 className="section-title">Spacial Offers</h1>
       <div className=" grid grid-cols-1 lg:grid-cols-2  gap-4">
         {/* box 1  */}
         <Reveal

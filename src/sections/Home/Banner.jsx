@@ -43,7 +43,9 @@ const Banner = ({ scene }) => {
           and reflects your personal style.
         </p>
         <Link to={"/available-cars"}>
-          <button className="btn btn-lg btn-warning">View Avalable Cars</button>
+          <button className="btn lg:btn-md xl:btn-lg btn-warning">
+            View Avalable Cars
+          </button>
         </Link>
         {/*color pagination  */}
         <div className="flex gap-2 pb-1 absolute -top-7 md:top-auto     mx-auto">

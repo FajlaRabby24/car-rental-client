@@ -43,7 +43,7 @@ const Feedbacks = () => {
 
   return (
     <div className="px-2">
-      <h1 className="font-semibold text-4xl mb-8">Feedbacks</h1>
+      <h1 className="section-title">Feedbacks</h1>
 
       <div className=" slideImage-container ">
         <div className="w-full max-w-full px-0 mx-auto">
