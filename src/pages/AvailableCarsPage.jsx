@@ -1,13 +1,32 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useLoaderData } from "react-router";
+import { Link } from "react-router";
 import AvvailbleCarCard from "../components/AvvailbleCarCard";
+import Loading from "../components/Loading";
 import useScrollToTop from "../hooks/useScrollToTop";
 import useTitle from "../hooks/useTitle";
 import NoCars from "../sections/My cars/NoCars";
 
 const AvailableCarsPage = () => {
-  const initialAvailableCars = useLoaderData();
-  const [availableCars, setAvailableCars] = useState(initialAvailableCars);
+  const { data: initialAvailableCars, isLoading } = useQuery({
+    queryKey: ["available-cars"],
+    queryFn: async () => {
+      const res = await axios.get(
+        `${import.meta.env.VITE_root_api_url}/available-cars`
+      );
+      return res.data;
+    },
+    staleTime: Infinity,
+  });
+  console.log(initialAvailableCars);
+  const [availableCars, setAvailableCars] = useState([]);
+  useEffect(() => {
+    if (initialAvailableCars) {
+      setAvailableCars(initialAvailableCars);
+    }
+  }, [initialAvailableCars]);
+
   useScrollToTop();
   useTitle("Available car");
   const [query, setQuery] = useState("");
@@ -22,7 +41,7 @@ const AvailableCarsPage = () => {
       fetch(`${import.meta.env.VITE_root_api_url}/car?search=${query}`)
         .then((res) => res.json())
         .then((data) => {
-          if (data.length) {
+          if (data?.length) {
             setAvailableCars(data);
           } else {
             setAvailableCars([]);
@@ -35,6 +54,8 @@ const AvailableCarsPage = () => {
 
     return () => clearTimeout(delayDebounce);
   }, [query, initialAvailableCars]);
+
+  if (isLoading) return <Loading />;
 
   // handlesort
   const handleSort = (e) => {

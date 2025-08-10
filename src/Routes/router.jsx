@@ -35,8 +35,8 @@ export const router = createBrowserRouter([
       {
         path: "available-cars",
         hydrateFallbackElement: <Loading />,
-        loader: () =>
-          fetch(`${import.meta.env.VITE_root_api_url}/available-cars`),
+        // loader: () =>
+        //   fetch(`${import.meta.env.VITE_root_api_url}/available-cars`),
         Component: AvailableCarsPage,
       },
       {
