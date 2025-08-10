@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { toast } from "react-toastify";
@@ -11,25 +12,25 @@ import NoCars from "../sections/My cars/NoCars";
 
 const MyBookingPage = () => {
   const [myBookings, setMyBookings] = useState([]);
-  const [loading, setLoading] = useState(true);
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   useScrollToTop();
   useTitle("My booking");
 
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["my-bookings", user.email],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/my-bookings?email=${user.email}`);
+      return res.data;
+    },
+    staleTime: Infinity,
+  });
+
   useEffect(() => {
-    axiosSecure
-      .get(
-        `${import.meta.env.VITE_root_api_url}/my-bookings?email=${user.email}`
-      )
-      .then((res) => {
-        setMyBookings(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        toast.error("There was an error! Please try again!");
-      });
-  }, [axiosSecure, user]);
+    if (data) {
+      setMyBookings(data);
+    }
+  }, [data]);
 
   // handle update ui after booking
   const handleUpdateUi = (updatedCar) => {
@@ -60,6 +61,10 @@ const MyBookingPage = () => {
     setMyBookings(setCars);
   };
 
+  if (isError) {
+    return toast.error("There was an error! Please try again!");
+  }
+
   return (
     <div className="pt-12 pb-20 px-2">
       <div className="flex items-center justify-between">
@@ -80,7 +85,7 @@ const MyBookingPage = () => {
           <option value={"high"}>Highest first</option>
         </select>
       </div>
-      {loading ? (
+      {isLoading ? (
         <Loading />
       ) : myBookings.length ? (
         <div className="overflow-x-auto">
