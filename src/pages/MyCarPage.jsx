@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { toast } from "react-toastify";
@@ -11,23 +12,26 @@ import NoCars from "../sections/My cars/NoCars";
 
 const MyCarPage = () => {
   const [myCars, setMyCars] = useState([]);
-  const [loading, setLoading] = useState(true);
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   useScrollToTop();
   useTitle("My car");
 
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["my-cars", user.email],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/my-cars?email=${user.email}`);
+      console.log(res.data);
+      return res.data;
+    },
+    staleTime: Infinity,
+  });
+
   useEffect(() => {
-    axiosSecure
-      .get(`${import.meta.env.VITE_root_api_url}/my-cars?email=${user.email}`)
-      .then((res) => {
-        setMyCars(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        toast.error("There was an error! Please try again!");
-      });
-  }, [user, axiosSecure]);
+    if (data) {
+      setMyCars(data);
+    }
+  }, [data]);
 
   // update ui
   const handleUpdateUi = (updateCar) => {
@@ -54,6 +58,10 @@ const MyCarPage = () => {
     setMyCars(setCars);
   };
 
+  if (isError) {
+    return toast.error("There was an error! Please try again!");
+  }
+
   return (
     <div className="pt-12 pb-40 px-2">
       <div className="flex items-center justify-between">
@@ -74,9 +82,9 @@ const MyCarPage = () => {
           <option value={"high"}>Highest first</option>
         </select>
       </div>
-      {loading ? (
+      {isLoading ? (
         <Loading />
-      ) : myCars.length ? (
+      ) : myCars?.length ? (
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
@@ -93,7 +101,7 @@ const MyCarPage = () => {
             </thead>
             <tbody>
               {/* row 1 */}
-              {myCars.map((car) => (
+              {myCars?.map((car) => (
                 <MyCarsTr
                   key={car._id}
                   car={car}
