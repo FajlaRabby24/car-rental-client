@@ -1,3 +1,4 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { differenceInDays, format } from "date-fns";
 import { useState } from "react";
 import Modal from "react-modal";
@@ -27,7 +28,7 @@ const BookingDiolog = ({
   handleUpdateCarDetailsUi,
 }) => {
   const { user } = useAuth();
-
+  const queryClient = useQueryClient();
   const axiosSecure = useAxiosSecure();
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -65,6 +66,7 @@ const BookingDiolog = ({
       .then((res) => {
         if (res.data.insertedId) {
           toast.success("Your booking added successfully!");
+          queryClient.invalidateQueries([`my-bookings`]);
           handleUpdateCarDetailsUi(_id);
           closeModal();
         }

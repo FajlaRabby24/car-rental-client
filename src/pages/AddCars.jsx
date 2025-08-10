@@ -1,3 +1,4 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
@@ -7,6 +8,7 @@ import useTitle from "../hooks/useTitle";
 
 const AddCars = () => {
   const axiosSecure = useAxiosSecure();
+  const queryClient = useQueryClient();
   const currentDate = useDate();
   const { user } = useAuth();
   useScrollToTop();
@@ -31,13 +33,12 @@ const AddCars = () => {
     };
 
     axiosSecure
-      .post(
-        `${import.meta.env.VITE_root_api_url}/add-car?email=${user.email}`,
-        newCar
-      )
+      .post(`/add-car?email=${user.email}`, newCar)
       .then((res) => {
         if (res.data.insertedId) {
           toast.success("Car added successfully!");
+          queryClient.invalidateQueries([`available-cars`]);
+          queryClient.invalidateQueries([`my-cars`]);
           form.reset();
         }
       })
