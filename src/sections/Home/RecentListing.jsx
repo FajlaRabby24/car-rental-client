@@ -10,6 +10,7 @@ const RecentListing = () => {
       fetch(`${import.meta.env.VITE_root_api_url}/recent-list`).then((res) =>
         res.json()
       ),
+    staleTime: Infinity,
   });
 
   if (isLoading) {

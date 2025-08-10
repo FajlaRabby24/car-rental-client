@@ -19,7 +19,6 @@ const AvailableCarsPage = () => {
     },
     staleTime: Infinity,
   });
-  console.log(initialAvailableCars);
   const [availableCars, setAvailableCars] = useState([]);
   useEffect(() => {
     if (initialAvailableCars) {

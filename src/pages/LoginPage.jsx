@@ -8,6 +8,7 @@ const LoginPage = () => {
   const [showPass, setShowPass] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const [isFilUpForm, setIsFilUpForm] = useState(false);
   const { signInUser, googleLogin } = useAuth();
 
   const handleSignInUser = (e) => {
@@ -62,6 +63,7 @@ const LoginPage = () => {
           </svg>
           <input
             type="email"
+            defaultValue={isFilUpForm ? `fortest@gmail.com` : null}
             name="email"
             placeholder="mail@site.com"
             required
@@ -93,6 +95,7 @@ const LoginPage = () => {
             required
             placeholder="Password"
             minLength="6"
+            defaultValue={isFilUpForm ? `forTest1` : null}
             name="password"
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
             title="Must be more than 6 characters, including number, lowercase letter, uppercase letter"
@@ -105,10 +108,14 @@ const LoginPage = () => {
             {showPass ? <IoMdEyeOff size={25} /> : <IoMdEye size={25} />}
           </button>
         </label>
-        <div className="mt-1">
-          <Link className="text-xs link link-hover">Forgot Password?</Link>
-        </div>
-
+        <label className="label pt-4">
+          <input
+            onChange={() => setIsFilUpForm((prev) => !prev)}
+            type="checkbox"
+            className="checkbox"
+          />
+          Fillup the form for test
+        </label>
         <p className="validator-hint hidden">
           Must be more than 8 characters, including
           <br />

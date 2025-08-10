@@ -180,7 +180,7 @@ const RegisterPage = () => {
           </button>
         </label>
         <p className="validator-hint hidden">
-          Must be more than 8 characters, including
+          Must be more than 6 characters, including
           <br />
           At least one number <br />
           At least one lowercase letter <br />

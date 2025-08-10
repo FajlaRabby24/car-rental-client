@@ -40,7 +40,7 @@ const WhyChooseUs = () => {
     <div className="px-2">
       <h1 className="section-title">Why Choose Us!</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {whyChooseUsInfo.map((item) => (
+        {whyChooseUsInfo?.map((item) => (
           <WhyChooseUsCard key={item.id} item={item} />
         ))}
       </div>

@@ -21,7 +21,6 @@ const MyCarPage = () => {
     queryKey: ["my-cars", user.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/my-cars?email=${user.email}`);
-      console.log(res.data);
       return res.data;
     },
     staleTime: Infinity,

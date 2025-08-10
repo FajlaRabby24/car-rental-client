@@ -34,24 +34,30 @@ const Navbar = () => {
           Contact me
         </NavLink>
       </li>
+
       {user && (
-        <>
-          <li>
-            <NavLink className={"font-semibold"} to={"/add-cars"}>
-              Add cars
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className={"font-semibold"} to={"/my-cars"}>
-              My cars
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className={"font-semibold"} to={"/my-bookings"}>
-              My bookings
-            </NavLink>
-          </li>
-        </>
+        <li>
+          <details>
+            <summary className="font-semibold">For you</summary>
+            <ul className="p-2 w-44">
+              <li>
+                <NavLink className={"font-semibold"} to={"/add-cars"}>
+                  Add cars
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className={"font-semibold"} to={"/my-cars"}>
+                  My cars
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className={"font-semibold"} to={"/my-bookings"}>
+                  My bookings
+                </NavLink>
+              </li>
+            </ul>
+          </details>
+        </li>
       )}
     </>
   );

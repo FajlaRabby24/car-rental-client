@@ -39,6 +39,7 @@ const AddCars = () => {
           toast.success("Car added successfully!");
           queryClient.invalidateQueries([`available-cars`]);
           queryClient.invalidateQueries([`my-cars`]);
+          queryClient.invalidateQueries([`recent`]);
           form.reset();
         }
       })
