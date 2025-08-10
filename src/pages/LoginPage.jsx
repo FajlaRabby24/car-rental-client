@@ -63,7 +63,7 @@ const LoginPage = () => {
           </svg>
           <input
             type="email"
-            defaultValue={isFilUpForm ? `fortest@gmail.com` : null}
+            defaultValue={isFilUpForm ? `fortest@gmail.com` : ""}
             name="email"
             placeholder="mail@site.com"
             required
@@ -95,7 +95,7 @@ const LoginPage = () => {
             required
             placeholder="Password"
             minLength="6"
-            defaultValue={isFilUpForm ? `forTest1` : null}
+            defaultValue={isFilUpForm ? `forTest1` : ""}
             name="password"
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
             title="Must be more than 6 characters, including number, lowercase letter, uppercase letter"
