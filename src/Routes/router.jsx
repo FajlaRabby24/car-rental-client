@@ -68,11 +68,7 @@ export const router = createBrowserRouter([
         hydrateFallbackElement: <Loading />,
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_root_api_url}/car/${params.id}`),
-        element: (
-          <PrivateRoute>
-            <CarDetailsPage />
-          </PrivateRoute>
-        ),
+        element: <CarDetailsPage />,
       },
       {
         path: "login",

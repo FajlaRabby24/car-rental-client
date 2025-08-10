@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaCar } from "react-icons/fa";
 import { MdKeyboardArrowLeft } from "react-icons/md";
-import { useLoaderData, useNavigate } from "react-router";
+import { useLoaderData, useLocation, useNavigate } from "react-router";
 import BookingDiolog from "../components/BookingDiolog";
 import useAuth from "../hooks/useAuth";
 import useScrollToTop from "../hooks/useScrollToTop";
@@ -9,13 +9,14 @@ import useTitle from "../hooks/useTitle";
 
 const CarDetailsPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { user } = useAuth();
   useScrollToTop();
   useTitle("Car details");
   const car = useLoaderData();
   const [carDetails, setCarDetails] = useState(car);
-  console.log(typeof car);
+
   useEffect(() => {
     if (typeof car !== "object") {
       return navigate("/not-found", { replace: true });
@@ -26,7 +27,7 @@ const CarDetailsPage = () => {
     model,
     bookingCount,
     availability,
-    location,
+    location: carLocation,
     rentalPrice,
     image,
     feturesToArr,
@@ -43,7 +44,13 @@ const CarDetailsPage = () => {
     }
   };
 
-  const isOwnCar = user.email === owner;
+  const handleBooking = () => {
+    if (!user) {
+      return navigate("/login", { state: location.pathname });
+    }
+    setIsModalOpen(true);
+  };
+  const isOwnCar = user?.email === owner;
 
   return (
     <div className="px-3 mb-40 mt-10 ">
@@ -82,7 +89,7 @@ const CarDetailsPage = () => {
           </p>
           <p className="font-semibold">
             Location:{" "}
-            <span className="font-normal text-[#787777]">{location}</span>
+            <span className="font-normal text-[#787777]">{carLocation}</span>
           </p>
           <p className="font-semibold">
             Availability:{" "}
@@ -106,7 +113,7 @@ const CarDetailsPage = () => {
               data-tooltip-id="my-tooltip"
               data-tooltip-content="Book car"
               disabled={isOwnCar}
-              onClick={() => setIsModalOpen(true)}
+              onClick={handleBooking}
               className="btn btn-error btn-outline"
             >
               <FaCar size={20} /> Book now

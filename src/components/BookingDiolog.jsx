@@ -27,23 +27,14 @@ const BookingDiolog = ({
   handleUpdateCarDetailsUi,
 }) => {
   const { user } = useAuth();
+
   const axiosSecure = useAxiosSecure();
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [totalDays, setTotalDays] = useState(0);
   const currentTime = useTime();
   const currentDate = useDate();
-  const {
-    _id,
-    model,
-    bookingCount,
-    availability,
-    location,
-    rentalPrice,
-    image,
-    feturesToArr,
-    description,
-  } = car;
+  const { _id, model, availability, rentalPrice, image } = car;
 
   function closeModal() {
     setIsModalOpen(false);
@@ -51,8 +42,9 @@ const BookingDiolog = ({
   // handle booking
   const handleBooking = (e) => {
     e.preventDefault();
+
     const newBooking = {
-      email: user.email,
+      email: user?.email,
       bookingDate: `${currentDate} ${currentTime}`,
       startDate,
       endDate,
@@ -66,7 +58,7 @@ const BookingDiolog = ({
     axiosSecure
       .post(
         `${import.meta.env.VITE_root_api_url}/booking/${_id}?email=${
-          user.email
+          user?.email
         }`,
         newBooking
       )
